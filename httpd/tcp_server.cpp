@@ -120,12 +120,12 @@ void tcp_server::thread_func(socket_t server_fd)
                     vector_char buffer;;
                     int len = it->second->recv(buffer);
                     
-                    if (len == 0) {
+                    if (len <= 0) {
                         _handler->on_close(*(it->second));
                         closesocket(it->first);
                         closed_list.push_back(it->first);
                     }
-                    else
+                    else if (len > 0)
                         _handler->on_receive(*(it->second), buffer);
                 }
             }

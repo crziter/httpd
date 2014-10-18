@@ -4,31 +4,45 @@
 #include "http_server.h"
 #include "http_connection.h"
 #include "http_task.h"
+#include "http_handler.h"
 
-class http_handler : public tcp_handler
+class lowlevel_handler : public tcp_handler
 {
 public:
-    http_handler(dispatcher * dispacher) {
+    lowlevel_handler(dispatcher * dispacher, http_handler *handler) {
         _dispatcher = dispacher;
+        _handler = handler;
     }
 
     void on_accept(tcp_socket & sock) override
     {
-        _conns[&sock] = new http_connection();
+        IF_DEBUG({
+            std::cout << "Client has connected" << std::endl;
+        });
+
+        _conns[&sock] = new http_connection(&sock);
     }
 
     void on_receive(tcp_socket& sock, vector_char& data) override
     {
         auto conn = _conns.at(&sock);
 
+        IF_DEBUG({
+            std::cout << "Received " << data.size() << " bytes from client" << std::endl;
+        });
+
         conn->append(data);
-        while (conn->finished_request()) {
-            process_request(conn->request_data());
+        while (conn->has_request_pending()) {
+            _handler->on_request(*_conns[&sock]);
         }
     }
 
     void on_close(tcp_socket & sock) override
     {
+        IF_DEBUG({
+            std::cout << "Client is about to disconnect" << std::endl;
+        });
+
         _conns.erase(&sock);
     }
 
@@ -36,28 +50,26 @@ private:
     typedef std::map<tcp_socket *, http_connection *> map_socket_connection;
     map_socket_connection _conns;
     dispatcher *_dispatcher;
-
-    void process_request(const std::string& request_data) {
-        http_request rq;
-        rq.parse(request_data);
-
-        std::cout << rq.method_str() << " to " << rq.uri().uri() << " with content (" << rq.content() << ")" << std::endl;
-        return;
-    }
+    http_handler *_handler;
 };
 
-http_server::http_server()
+http_server::http_server(int num_workers, http_handler *handler)
 {
-    _dispatcher = new dispatcher(4);
-    _server = new tcp_server(new http_handler(_dispatcher));
+    _num_workers = num_workers;
+    _http_handler = handler;
+
+    _dispatcher = new dispatcher(_num_workers);
+    _server = new tcp_server(new lowlevel_handler(_dispatcher, handler));
 }
 
 http_server::~http_server()
 {
     delete _dispatcher;
 
-    if (_server != nullptr)
+    if (_server != nullptr) {
         delete _server;
+        delete _http_handler;
+    }
 }
 
 int http_server::start(const char_ptr addr, ushort port)

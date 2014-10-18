@@ -11,21 +11,19 @@ void http_connection::append(vector_char& data)
     _data.append(&data[0], data.size());
 }
 
-bool http_connection::finished_request()
+bool http_connection::has_request_pending()
 {
     std::regex fn_reg("\\r\\n\\r\\n", std::regex_constants::ECMAScript);
     bool found = std::regex_search(_data, fn_reg);
 
-// #ifdef _DEBUG
-//     cout << "regex_search result: " << found << endl;
-// #endif
-
     return found;
 }
 
-const std::string& http_connection::request_data()
+http_request http_connection::next_request()
 {
-    if (finished_request()) {
+    std::string request_string;
+
+    if (has_request_pending()) {
         std::regex fn_reg("[^]*?\\r\\n\\r\\n");
         std::smatch m;
         if (std::regex_search(_data, m, fn_reg)) {
@@ -37,7 +35,7 @@ const std::string& http_connection::request_data()
                     std::string method = m_method[0].str();
                     if (_stricmp(method.c_str(), http_method_str[http_method::GET]) == 0) {
                         // Get the real request data
-                        _request = request_packet.substr(0, request_packet.length() - 4);
+                        request_string = request_packet.substr(0, request_packet.length() - 4);
                         _data = m.suffix().str();
                     }
                     else if (_stricmp(method.c_str(), http_method_str[http_method::POST]) == 0) {
@@ -50,7 +48,7 @@ const std::string& http_connection::request_data()
 
                             // TODO: Check if length not digit then drop request
                             if (_data.length() - request_packet.length() >= i_length) {
-                                _request = _data.substr(0, request_packet.length() + i_length);
+                                request_string = _data.substr(0, request_packet.length() + i_length);
                                 _data = _data.substr(request_packet.length() + i_length);
                             }
                         }
@@ -60,5 +58,12 @@ const std::string& http_connection::request_data()
         }
     }
 
-    return _request;
+    http_request rq;
+    rq.parse(request_string);
+    return rq;
+}
+
+http_connection::http_connection(tcp_socket *sock)
+{
+    _socket = sock;
 }

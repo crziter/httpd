@@ -64,7 +64,6 @@ void dispatcher::thread_func(int num)
     std::mutex _thread_mutex;
 
     IF_DEBUG({
-        std::unique_lock<std::mutex> lk(_global_mutex);
         std::cout << "Worker " << std::this_thread::get_id() << " started, waiting for job .." << std::endl;
     });
 

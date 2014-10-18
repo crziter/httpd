@@ -1,12 +1,12 @@
 #ifndef __http_handler_h__
 #define __http_handler_h__
 
-#include "http_request.h"
+#include "http_connection.h"
 
 class http_handler
 {
 public:
-    virtual bool on_request(http_request& request) = 0;
+    virtual void on_request(http_connection& conn) = 0;
 };
 
 #endif
