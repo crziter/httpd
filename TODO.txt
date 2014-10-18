@@ -1,0 +1,3 @@
+- Xử lí virtualhost
+- Phục vụ file tĩnh
+- Phục vụ server-side sript (qua CGI)?
