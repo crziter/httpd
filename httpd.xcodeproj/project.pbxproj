@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C15D3FF19F1795A00AC5DF9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C15D3FE19F1795A00AC5DF9 /* main.cpp */; };
+		1C8D75B919F17994006E8282 /* dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D759F19F17994006E8282 /* dispatcher.cpp */; };
+		1C8D75BA19F17994006E8282 /* http_connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A119F17994006E8282 /* http_connection.cpp */; };
+		1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A419F17994006E8282 /* http_header.cpp */; };
+		1C8D75BC19F17994006E8282 /* http_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A619F17994006E8282 /* http_request.cpp */; };
+		1C8D75BD19F17994006E8282 /* http_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A919F17994006E8282 /* http_server.cpp */; };
+		1C8D75BE19F17994006E8282 /* http_specs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75AB19F17994006E8282 /* http_specs.cpp */; };
+		1C8D75BF19F17994006E8282 /* http_task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75AD19F17994006E8282 /* http_task.cpp */; };
+		1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75AF19F17994006E8282 /* http_uri.cpp */; };
+		1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B519F17994006E8282 /* tcp_server.cpp */; };
+		1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B719F17994006E8282 /* tcp_socket.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C15D3F919F1795A00AC5DF9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1C15D3FB19F1795A00AC5DF9 /* httpd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = httpd; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C15D3FE19F1795A00AC5DF9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1C8D759F19F17994006E8282 /* dispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dispatcher.cpp; sourceTree = "<group>"; };
+		1C8D75A019F17994006E8282 /* dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dispatcher.h; sourceTree = "<group>"; };
+		1C8D75A119F17994006E8282 /* http_connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_connection.cpp; sourceTree = "<group>"; };
+		1C8D75A219F17994006E8282 /* http_connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_connection.h; sourceTree = "<group>"; };
+		1C8D75A319F17994006E8282 /* http_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_handler.h; sourceTree = "<group>"; };
+		1C8D75A419F17994006E8282 /* http_header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_header.cpp; sourceTree = "<group>"; };
+		1C8D75A519F17994006E8282 /* http_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_header.h; sourceTree = "<group>"; };
+		1C8D75A619F17994006E8282 /* http_request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_request.cpp; sourceTree = "<group>"; };
+		1C8D75A719F17994006E8282 /* http_request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_request.h; sourceTree = "<group>"; };
+		1C8D75A819F17994006E8282 /* http_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_response.h; sourceTree = "<group>"; };
+		1C8D75A919F17994006E8282 /* http_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_server.cpp; sourceTree = "<group>"; };
+		1C8D75AA19F17994006E8282 /* http_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_server.h; sourceTree = "<group>"; };
+		1C8D75AB19F17994006E8282 /* http_specs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_specs.cpp; sourceTree = "<group>"; };
+		1C8D75AC19F17994006E8282 /* http_specs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_specs.h; sourceTree = "<group>"; };
+		1C8D75AD19F17994006E8282 /* http_task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_task.cpp; sourceTree = "<group>"; };
+		1C8D75AE19F17994006E8282 /* http_task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_task.h; sourceTree = "<group>"; };
+		1C8D75AF19F17994006E8282 /* http_uri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_uri.cpp; sourceTree = "<group>"; };
+		1C8D75B019F17994006E8282 /* http_uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_uri.h; sourceTree = "<group>"; };
+		1C8D75B319F17994006E8282 /* port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = port.h; sourceTree = "<group>"; };
+		1C8D75B419F17994006E8282 /* tcp_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_handler.h; sourceTree = "<group>"; };
+		1C8D75B519F17994006E8282 /* tcp_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcp_server.cpp; sourceTree = "<group>"; };
+		1C8D75B619F17994006E8282 /* tcp_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_server.h; sourceTree = "<group>"; };
+		1C8D75B719F17994006E8282 /* tcp_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcp_socket.cpp; sourceTree = "<group>"; };
+		1C8D75B819F17994006E8282 /* tcp_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_socket.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C15D3F819F1795A00AC5DF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C15D3F219F1795A00AC5DF9 = {
+			isa = PBXGroup;
+			children = (
+				1C15D3FD19F1795A00AC5DF9 /* httpd */,
+				1C15D3FC19F1795A00AC5DF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C15D3FC19F1795A00AC5DF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C15D3FB19F1795A00AC5DF9 /* httpd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
+			isa = PBXGroup;
+			children = (
+				1C8D759F19F17994006E8282 /* dispatcher.cpp */,
+				1C8D75A019F17994006E8282 /* dispatcher.h */,
+				1C8D75A119F17994006E8282 /* http_connection.cpp */,
+				1C8D75A219F17994006E8282 /* http_connection.h */,
+				1C8D75A319F17994006E8282 /* http_handler.h */,
+				1C8D75A419F17994006E8282 /* http_header.cpp */,
+				1C8D75A519F17994006E8282 /* http_header.h */,
+				1C8D75A619F17994006E8282 /* http_request.cpp */,
+				1C8D75A719F17994006E8282 /* http_request.h */,
+				1C8D75A819F17994006E8282 /* http_response.h */,
+				1C8D75A919F17994006E8282 /* http_server.cpp */,
+				1C8D75AA19F17994006E8282 /* http_server.h */,
+				1C8D75AB19F17994006E8282 /* http_specs.cpp */,
+				1C8D75AC19F17994006E8282 /* http_specs.h */,
+				1C8D75AD19F17994006E8282 /* http_task.cpp */,
+				1C8D75AE19F17994006E8282 /* http_task.h */,
+				1C8D75AF19F17994006E8282 /* http_uri.cpp */,
+				1C8D75B019F17994006E8282 /* http_uri.h */,
+				1C8D75B319F17994006E8282 /* port.h */,
+				1C8D75B419F17994006E8282 /* tcp_handler.h */,
+				1C8D75B519F17994006E8282 /* tcp_server.cpp */,
+				1C8D75B619F17994006E8282 /* tcp_server.h */,
+				1C8D75B719F17994006E8282 /* tcp_socket.cpp */,
+				1C8D75B819F17994006E8282 /* tcp_socket.h */,
+				1C15D3FE19F1795A00AC5DF9 /* main.cpp */,
+			);
+			path = httpd;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C15D3FA19F1795A00AC5DF9 /* httpd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C15D40419F1795A00AC5DF9 /* Build configuration list for PBXNativeTarget "httpd" */;
+			buildPhases = (
+				1C15D3F719F1795A00AC5DF9 /* Sources */,
+				1C15D3F819F1795A00AC5DF9 /* Frameworks */,
+				1C15D3F919F1795A00AC5DF9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = httpd;
+			productName = httpd;
+			productReference = 1C15D3FB19F1795A00AC5DF9 /* httpd */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C15D3F319F1795A00AC5DF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = SGU;
+			};
+			buildConfigurationList = 1C15D3F619F1795A00AC5DF9 /* Build configuration list for PBXProject "httpd" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1C15D3F219F1795A00AC5DF9;
+			productRefGroup = 1C15D3FC19F1795A00AC5DF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C15D3FA19F1795A00AC5DF9 /* httpd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C15D3F719F1795A00AC5DF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C8D75BF19F17994006E8282 /* http_task.cpp in Sources */,
+				1C8D75BD19F17994006E8282 /* http_server.cpp in Sources */,
+				1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */,
+				1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */,
+				1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */,
+				1C8D75BA19F17994006E8282 /* http_connection.cpp in Sources */,
+				1C8D75BC19F17994006E8282 /* http_request.cpp in Sources */,
+				1C8D75B919F17994006E8282 /* dispatcher.cpp in Sources */,
+				1C8D75BE19F17994006E8282 /* http_specs.cpp in Sources */,
+				1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */,
+				1C15D3FF19F1795A00AC5DF9 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C15D40219F1795A00AC5DF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1C15D40319F1795A00AC5DF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1C15D40519F1795A00AC5DF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1C15D40619F1795A00AC5DF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C15D3F619F1795A00AC5DF9 /* Build configuration list for PBXProject "httpd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C15D40219F1795A00AC5DF9 /* Debug */,
+				1C15D40319F1795A00AC5DF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C15D40419F1795A00AC5DF9 /* Build configuration list for PBXNativeTarget "httpd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C15D40519F1795A00AC5DF9 /* Debug */,
+				1C15D40619F1795A00AC5DF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C15D3F319F1795A00AC5DF9 /* Project object */;
+}

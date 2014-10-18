@@ -1,0 +1,64 @@
+#include <iostream>
+#include <regex>
+#include "http_connection.h"
+#include "http_specs.h"
+
+using std::cout;
+using std::endl;
+
+void http_connection::append(vector_char& data)
+{
+    _data.append(&data[0], data.size());
+}
+
+bool http_connection::finished_request()
+{
+    std::regex fn_reg("\\r\\n\\r\\n", std::regex_constants::ECMAScript);
+    bool found = std::regex_search(_data, fn_reg);
+
+// #ifdef _DEBUG
+//     cout << "regex_search result: " << found << endl;
+// #endif
+
+    return found;
+}
+
+const std::string& http_connection::request_data()
+{
+    if (finished_request()) {
+        std::regex fn_reg("[^]*?\\r\\n\\r\\n");
+        std::smatch m;
+        if (std::regex_search(_data, m, fn_reg)) {
+            std::string request_packet = m.str();
+            std::regex fn_method("^(\\w+)");
+            std::smatch m_method;
+            if (std::regex_search(request_packet, m_method, fn_method)) {
+                if (m_method.size() > 0) {
+                    std::string method = m_method[0].str();
+                    if (_stricmp(method.c_str(), http_method_str[http_method::GET]) == 0) {
+                        // Get the real request data
+                        _request = request_packet.substr(0, request_packet.length() - 4);
+                        _data = m.suffix().str();
+                    }
+                    else if (_stricmp(method.c_str(), http_method_str[http_method::POST]) == 0) {
+                        // Check if full request (including content) received
+                        std::regex fn_content("Content-Length\\s*?:\\s*?(\\d+)\\r\\n\\r\\n");
+                        std::smatch m_length;
+                        if (std::regex_search(request_packet, m_length, fn_content)) {
+                            std::string length = m_length[1].str();
+                            int i_length = std::stoi(length);
+
+                            // TODO: Check if length not digit then drop request
+                            if (_data.length() - request_packet.length() >= i_length) {
+                                _request = _data.substr(0, request_packet.length() + i_length);
+                                _data = _data.substr(request_packet.length() + i_length);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return _request;
+}

@@ -1,0 +1,10 @@
+.DS_Store
+*.opensdf
+*.sdf
+*.suo
+httpd.xcodeproj/xcuserdata/
+httpd.xcodeproj/project.xcworkspace/xcuserdata/
+Debug/
+httpd/Debug/
+Release/
+httpd/Release/
