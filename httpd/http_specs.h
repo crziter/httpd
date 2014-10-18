@@ -8,4 +8,10 @@ enum http_method {
 
 extern const char * http_method_str[];
 
+enum http_status {
+    OK = 200
+};
+
+const char * http_status_str(http_status status);
+
 #endif

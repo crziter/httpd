@@ -87,9 +87,12 @@ void dispatcher::thread_func(int num)
 
         if (task != nullptr) {
             task->run();
-            /*task->cond_var().notify_all();*/
-
             delete task;
         }
+
+        IF_DEBUG({
+            std::unique_lock<std::mutex> lk(_global_mutex);
+            std::cout << "Worker " << std::this_thread::get_id() << " finish job" << std::endl;
+        });
     }
 }

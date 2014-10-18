@@ -3,6 +3,7 @@
 
 #include "http_specs.h"
 #include "http_header.h"
+#include "http_request.h"
 
 class http_connection;
 class http_response
@@ -10,17 +11,25 @@ class http_response
 public:
     http_response(http_connection& conn);
 
-    void method(http_method method);
+    void version(std::string& version);
+    void status(http_status status);
     void header(http_header& headers);
     void content(std::string& content);
 
+    void build();
+
     unsigned int flush();
+    bool is_sent_all();
 
 private:
     http_connection& _conn;
-    http_method _method;
     http_header _header;
     std::string _content;
+    std::string _version;
+    http_status _status;
+    int _sent;
+    
+    std::string _data;
 };
 
 #include "http_connection.h"

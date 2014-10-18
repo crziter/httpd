@@ -17,8 +17,8 @@ public:
 //     std::condition_variable& cond_var();
 
 private:
-    http_request _rq;
-    http_response _rp;
+    http_request _request;
+    http_response _response;
 
 //     std::condition_variable _cond_var;
 //     bool _finished = false;
