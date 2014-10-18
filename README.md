@@ -1,9 +1,9 @@
 #httpd
 
-My final school project :)
+Final project
 
 ##Summary
-A http/https server which support virtual hosts.
+http/https server which support virtual hosts.
 
-##Platform
-Currently, it can be built on Windows and Mac OSX 10.9 (Mavericks)
+##Support platform
+Windows, Mac OSX 10.9 (Mavericks)
