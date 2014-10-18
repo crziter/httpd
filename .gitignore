@@ -4,6 +4,7 @@
 *.suo
 httpd.xcodeproj/xcuserdata/
 httpd.xcodeproj/project.xcworkspace/xcuserdata/
+httpd.xcodeproj/project.xcworkspace/xcshareddata/
 Debug/
 httpd/Debug/
 Release/
