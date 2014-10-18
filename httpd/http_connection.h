@@ -19,10 +19,14 @@ public:
      */
     bool has_request_pending();
     http_request next_request();
+    http_response& get_response();
+
+    tcp_socket& socket();
 
 private:
     std::string _data;
     tcp_socket *_socket;
+    http_response _response;
 };
 
 #endif

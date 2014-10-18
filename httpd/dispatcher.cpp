@@ -6,11 +6,8 @@ dispatcher::dispatcher(int num_workers)
     _num_workers    = num_workers;
     _running        = true;
 
-    /* _lst_tasks      = new std::deque<http_task_ptr>[num_workers];
-    _cond_vars      = new std::condition_variable[num_workers];
-    _threads        = new std::thread[num_workers]; */
-
-    _thread_datas = new thread_data[num_workers];
+    _thread_datas   = new thread_data[num_workers];
+    _threads        = new std::thread[num_workers];
     for (int i = 0; i < num_workers; ++i) {
         _threads[i] = std::thread(&dispatcher::thread_func, this, i);
     }
@@ -35,8 +32,6 @@ void dispatcher::stop_workers()
 
     delete[] _threads;
     delete[] _thread_datas;
-//     delete[] _lst_tasks;
-//     delete[] _cond_vars;
 }
 
 void dispatcher::submit_task(http_task_ptr task, int task_queue /* = -1 */)
@@ -91,9 +86,8 @@ void dispatcher::thread_func(int num)
         }
 
         if (task != nullptr) {
-            auto func = task->task();
-            func();
-            task->cond_var().notify_all();
+            task->run();
+            /*task->cond_var().notify_all();*/
 
             delete task;
         }

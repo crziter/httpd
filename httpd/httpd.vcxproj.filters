@@ -51,6 +51,9 @@
     <ClCompile Include="http_processor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="http_response.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">

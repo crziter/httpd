@@ -19,6 +19,7 @@
 		1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B519F17994006E8282 /* tcp_server.cpp */; };
 		1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B719F17994006E8282 /* tcp_socket.cpp */; };
 		1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C319F2A08A00867029 /* http_processor.cpp */; };
+		1C8D90C719F2EBC800867029 /* http_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C619F2EBC800867029 /* http_response.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,7 @@
 		1C8D75B819F17994006E8282 /* tcp_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_socket.h; sourceTree = "<group>"; };
 		1C8D90C319F2A08A00867029 /* http_processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_processor.cpp; sourceTree = "<group>"; };
 		1C8D90C419F2A08A00867029 /* http_processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_processor.h; sourceTree = "<group>"; };
+		1C8D90C619F2EBC800867029 /* http_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_response.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
 			isa = PBXGroup;
 			children = (
+				1C8D90C619F2EBC800867029 /* http_response.cpp */,
 				1C8D90C319F2A08A00867029 /* http_processor.cpp */,
 				1C8D90C419F2A08A00867029 /* http_processor.h */,
 				1C8D759F19F17994006E8282 /* dispatcher.cpp */,
@@ -179,6 +182,7 @@
 				1C8D75BF19F17994006E8282 /* http_task.cpp in Sources */,
 				1C8D75BD19F17994006E8282 /* http_server.cpp in Sources */,
 				1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */,
+				1C8D90C719F2EBC800867029 /* http_response.cpp in Sources */,
 				1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */,
 				1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */,
 				1C8D75BA19F17994006E8282 /* http_connection.cpp in Sources */,

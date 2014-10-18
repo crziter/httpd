@@ -83,6 +83,7 @@
     <ClCompile Include="http_header.cpp" />
     <ClCompile Include="http_processor.cpp" />
     <ClCompile Include="http_request.cpp" />
+    <ClCompile Include="http_response.cpp" />
     <ClCompile Include="http_server.cpp" />
     <ClCompile Include="http_specs.cpp" />
     <ClCompile Include="http_task.cpp" />
