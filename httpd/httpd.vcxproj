@@ -81,6 +81,7 @@
     <ClCompile Include="http_connection.cpp" />
     <ClCompile Include="dispatcher.cpp" />
     <ClCompile Include="http_header.cpp" />
+    <ClCompile Include="http_processor.cpp" />
     <ClCompile Include="http_request.cpp" />
     <ClCompile Include="http_server.cpp" />
     <ClCompile Include="http_specs.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="http_handler.h" />
     <ClInclude Include="dispatcher.h" />
     <ClInclude Include="http_header.h" />
+    <ClInclude Include="http_processor.h" />
     <ClInclude Include="http_request.h" />
     <ClInclude Include="http_response.h" />
     <ClInclude Include="http_server.h" />

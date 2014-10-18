@@ -48,6 +48,9 @@
     <ClCompile Include="http_uri.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="http_processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="http_uri.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="http_processor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

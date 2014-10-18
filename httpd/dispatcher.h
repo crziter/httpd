@@ -17,12 +17,17 @@ public:
     void stop_workers();
 
 private:
+    struct thread_data {
+        std::deque<http_task_ptr>   _lst_tasks;
+        std::condition_variable     _cond_vars;
+        std::mutex                  _task_mutex;
+    };
+
     int _num_workers;
     bool _running;
 
+    struct thread_data *        _thread_datas;
     std::thread *               _threads;
-    std::deque<http_task_ptr> * _lst_tasks;
-    std::condition_variable *   _cond_vars;
     std::mutex                  _global_mutex;
 
     void thread_func(int num);

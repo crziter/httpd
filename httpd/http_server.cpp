@@ -9,8 +9,7 @@
 class lowlevel_handler : public tcp_handler
 {
 public:
-    lowlevel_handler(dispatcher * dispacher, http_handler *handler) {
-        _dispatcher = dispacher;
+    lowlevel_handler(http_handler *handler) {
         _handler = handler;
     }
 
@@ -49,23 +48,18 @@ public:
 private:
     typedef std::map<tcp_socket *, http_connection *> map_socket_connection;
     map_socket_connection _conns;
-    dispatcher *_dispatcher;
     http_handler *_handler;
 };
 
-http_server::http_server(int num_workers, http_handler *handler)
+http_server::http_server(http_handler *handler)
 {
-    _num_workers = num_workers;
     _http_handler = handler;
 
-    _dispatcher = new dispatcher(_num_workers);
-    _server = new tcp_server(new lowlevel_handler(_dispatcher, handler));
+    _server = new tcp_server(new lowlevel_handler(handler));
 }
 
 http_server::~http_server()
 {
-    delete _dispatcher;
-
     if (_server != nullptr) {
         delete _server;
         delete _http_handler;

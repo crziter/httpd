@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Waiting for clients ..." << std::endl;
 
     {
-        http_server http(NUM_WORKERS, new handler());
+        http_server http(new handler());
         http.start("0.0.0.0", 8080);
 
         std::cin.get();

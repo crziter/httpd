@@ -18,6 +18,7 @@
 		1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75AF19F17994006E8282 /* http_uri.cpp */; };
 		1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B519F17994006E8282 /* tcp_server.cpp */; };
 		1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B719F17994006E8282 /* tcp_socket.cpp */; };
+		1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C319F2A08A00867029 /* http_processor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,6 +60,8 @@
 		1C8D75B619F17994006E8282 /* tcp_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_server.h; sourceTree = "<group>"; };
 		1C8D75B719F17994006E8282 /* tcp_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcp_socket.cpp; sourceTree = "<group>"; };
 		1C8D75B819F17994006E8282 /* tcp_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_socket.h; sourceTree = "<group>"; };
+		1C8D90C319F2A08A00867029 /* http_processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_processor.cpp; sourceTree = "<group>"; };
+		1C8D90C419F2A08A00867029 /* http_processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_processor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
 			isa = PBXGroup;
 			children = (
+				1C8D90C319F2A08A00867029 /* http_processor.cpp */,
+				1C8D90C419F2A08A00867029 /* http_processor.h */,
 				1C8D759F19F17994006E8282 /* dispatcher.cpp */,
 				1C8D75A019F17994006E8282 /* dispatcher.h */,
 				1C8D75A119F17994006E8282 /* http_connection.cpp */,
@@ -181,6 +186,7 @@
 				1C8D75B919F17994006E8282 /* dispatcher.cpp in Sources */,
 				1C8D75BE19F17994006E8282 /* http_specs.cpp in Sources */,
 				1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */,
+				1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */,
 				1C15D3FF19F1795A00AC5DF9 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
