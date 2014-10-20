@@ -91,6 +91,8 @@
     <ClCompile Include="http_task.cpp" />
     <ClCompile Include="http_uri.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="socket_interface.cpp" />
+    <ClCompile Include="socket_wrapper.cpp" />
     <ClCompile Include="tcp_server.cpp" />
     <ClCompile Include="tcp_socket.cpp" />
   </ItemGroup>
@@ -108,6 +110,8 @@
     <ClInclude Include="http_specs.h" />
     <ClInclude Include="http_task.h" />
     <ClInclude Include="http_uri.h" />
+    <ClInclude Include="socket_interface.h" />
+    <ClInclude Include="socket_wrapper.h" />
     <ClInclude Include="tcp_handler.h" />
     <ClInclude Include="tcp_socket.h" />
     <ClInclude Include="port.h" />
