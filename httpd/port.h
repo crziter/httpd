@@ -5,6 +5,7 @@
 #include <windows.h>
 
 #define IF_WINDOWS(x) x
+#define CONFIG_FILE "\\\\psf\\Home\\Desktop\\final\\httpd\\conf\\httpd.conf"
 
 typedef int socklen_t;
 typedef SOCKET socket_t;
@@ -16,6 +17,7 @@ typedef SOCKET socket_t;
 #include <unistd.h>
 
 #if defined(__APPLE__)
+#define CONFIG_FILE "/Users/binhtruong/Desktop/final/httpd/conf/httpd.conf"
 #elif defined(__linux__)
 #endif
 
