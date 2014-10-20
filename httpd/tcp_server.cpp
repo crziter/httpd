@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "tcp_server.h"
+#include "socket_wrapper.h"
+
 #if defined(WIN32) || defined(_WIN32)
 #pragma comment(lib, "ws2_32.lib")
 #endif
@@ -60,7 +62,7 @@ void tcp_server::process_event()
     fd_set readset;
 
     timeval tv;
-    tv.tv_usec = 500000;
+    tv.tv_usec = 50000;
     tv.tv_sec = 0;
     while (_running) {
         FD_ZERO(&readset);
@@ -83,9 +85,9 @@ void tcp_server::process_event()
         else if (rs == 0) {
             /* Time out */
             
-            IF_DEBUG({
+            /* IF_DEBUG({
                 std::cout << "select() time out!" << std::endl;
-            });
+            }); */
         }
         else {
             if (FD_ISSET(_servers, &readset)) {
@@ -115,8 +117,9 @@ void tcp_server::process_event()
             for (auto s : _socks) {
                 if (FD_ISSET(s.first, &readset)) {
                     
-                    vector_char buffer;;
-                    int len = s.second->recv(buffer);
+                    vector_char buffer;
+                    socket_wrapper sock(*s.second);
+                    int len = sock.recv(buffer);
                     
                     if (len <= 0) {
                         _handler->on_close(*(s.second));
