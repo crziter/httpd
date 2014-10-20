@@ -64,7 +64,7 @@ http_request http_connection::next_request()
     return rq;
 }
 
-http_connection::http_connection(tcp_socket *sock)
+http_connection::http_connection(socket_interface *sock)
     :_response(*this)
 {
     _socket = sock;
@@ -75,7 +75,7 @@ http_response& http_connection::get_response()
     return _response;
 }
 
-tcp_socket& http_connection::socket()
+socket_interface& http_connection::socket()
 {
     return *_socket;
 }

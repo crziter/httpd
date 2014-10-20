@@ -3,14 +3,14 @@
 
 #include <string>
 #include "port.h"
-#include "tcp_socket.h"
+#include "socket_interface.h"
 #include "http_request.h"
 #include "http_response.h"
 
 class http_connection
 {
 public:
-    http_connection(tcp_socket *sock);
+    http_connection(socket_interface *sock);
 
     void append(vector_char& data);
 
@@ -21,11 +21,11 @@ public:
     http_request next_request();
     http_response& get_response();
 
-    tcp_socket& socket();
+    socket_interface& socket();
 
 private:
     std::string _data;
-    tcp_socket *_socket;
+    socket_interface *_socket;
     http_response _response;
 };
 

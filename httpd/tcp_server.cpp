@@ -2,6 +2,7 @@
 #include <vector>
 #include "tcp_server.h"
 #include "socket_wrapper.h"
+#include "tcp_socket.h"
 
 #if defined(WIN32) || defined(_WIN32)
 #pragma comment(lib, "ws2_32.lib")

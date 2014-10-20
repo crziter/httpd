@@ -7,6 +7,7 @@
 #include <map>
 
 #include "port.h"
+#include "socket_interface.h"
 #include "tcp_handler.h"
 
 class tcp_server
@@ -36,7 +37,7 @@ protected:
     tcp_handler*                        _handler;
     std::thread                         _threads;
     socket_t                            _servers;
-    std::map<socket_t, tcp_socket *>    _socks;
+    std::map<socket_t, socket_interface *>    _socks;
     bool                                _running;
 
     void process_event();

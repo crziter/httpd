@@ -13,7 +13,7 @@ public:
         _handler = handler;
     }
 
-    void on_accept(tcp_socket & sock) override
+    void on_accept(socket_interface & sock) override
     {
         IF_DEBUG({
             std::cout << "Client has connected" << std::endl;
@@ -22,7 +22,7 @@ public:
         _conns[&sock] = new http_connection(&sock);
     }
 
-    void on_receive(tcp_socket& sock, vector_char& data) override
+    void on_receive(socket_interface& sock, vector_char& data) override
     {
         auto conn = _conns.at(&sock);
 
@@ -36,7 +36,7 @@ public:
         }
     }
 
-    void on_close(tcp_socket & sock) override
+    void on_close(socket_interface & sock) override
     {
         IF_DEBUG({
             std::cout << "Client is about to disconnect" << std::endl;
@@ -46,7 +46,7 @@ public:
     }
 
 private:
-    typedef std::map<tcp_socket *, http_connection *> map_socket_connection;
+    typedef std::map<socket_interface *, http_connection *> map_socket_connection;
     map_socket_connection _conns;
     http_handler *_handler;
 };
