@@ -22,6 +22,8 @@
 		1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B719F17994006E8282 /* tcp_socket.cpp */; };
 		1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C319F2A08A00867029 /* http_processor.cpp */; };
 		1C8D90C719F2EBC800867029 /* http_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C619F2EBC800867029 /* http_response.cpp */; };
+		1CF086C319F5AEAD00D70187 /* socket_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */; };
+		1CF086C419F5AEAD00D70187 /* socket_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +71,10 @@
 		1C8D90C319F2A08A00867029 /* http_processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_processor.cpp; sourceTree = "<group>"; };
 		1C8D90C419F2A08A00867029 /* http_processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_processor.h; sourceTree = "<group>"; };
 		1C8D90C619F2EBC800867029 /* http_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_response.cpp; sourceTree = "<group>"; };
+		1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket_interface.cpp; sourceTree = "<group>"; };
+		1CF086C019F5AEAD00D70187 /* socket_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_interface.h; sourceTree = "<group>"; };
+		1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket_wrapper.cpp; sourceTree = "<group>"; };
+		1CF086C219F5AEAD00D70187 /* socket_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_wrapper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,10 @@
 		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
 			isa = PBXGroup;
 			children = (
+				1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */,
+				1CF086C019F5AEAD00D70187 /* socket_interface.h */,
+				1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */,
+				1CF086C219F5AEAD00D70187 /* socket_wrapper.h */,
 				1C33524E19F57E0C0011825D /* configuration.cpp */,
 				1C33524F19F57E0C0011825D /* configuration.h */,
 				1C33525019F57E0C0011825D /* file_operations.cpp */,
@@ -188,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C8D75BF19F17994006E8282 /* http_task.cpp in Sources */,
+				1CF086C419F5AEAD00D70187 /* socket_wrapper.cpp in Sources */,
 				1C8D75BD19F17994006E8282 /* http_server.cpp in Sources */,
 				1C8D75C119F17994006E8282 /* tcp_server.cpp in Sources */,
 				1C8D90C719F2EBC800867029 /* http_response.cpp in Sources */,
@@ -201,6 +212,7 @@
 				1C8D75BE19F17994006E8282 /* http_specs.cpp in Sources */,
 				1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */,
 				1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */,
+				1CF086C319F5AEAD00D70187 /* socket_interface.cpp in Sources */,
 				1C15D3FF19F1795A00AC5DF9 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
