@@ -6,11 +6,11 @@ enum http_method {
     POST
 };
 
-extern const char * http_method_str[];
-
 enum http_status {
     OK = 200
 };
+
+extern const char * http_method_str[];
 
 const char * http_status_str(http_status status);
 

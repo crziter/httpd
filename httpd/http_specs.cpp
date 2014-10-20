@@ -2,7 +2,8 @@
 
 const char * http_method_str[] = {
     "GET",
-    "POST"
+    "POST",
+    "PUT"
 };
 
 const char * http_statuses[] = {
