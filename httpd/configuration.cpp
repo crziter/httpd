@@ -2,6 +2,7 @@
 #include <fstream>
 #include <regex>
 #include "configuration.h"
+#include "file_operations.h"
 
 using std::regex;
 using std::regex_search;
@@ -12,25 +13,9 @@ using std::cout;
 
 bool configuration::load(std::string& conf_file)
 {
-    ifstream f;
-    char *buff = nullptr;
-    f.open(conf_file);
-    if (f.is_open()) {
-        int length;
-        f.seekg(0, ios::end);
-        length = f.tellg();
-        buff = new char[length + 1];
-        f.seekg(0, ios::beg);
+    std::string conf_string;
 
-        f.read(buff, length);
-        buff[length] = 0;
-        f.close();
-    }
-
-    if (buff != nullptr) {
-        std::string conf_string = std::string(buff);
-        delete[] buff;
-
+    if (file_operations::get_content(conf_file, conf_string)) {
         regex reg_address("address\\s*=\\s*([\\d\\.]+)\\s*");
         smatch match_address;
         if (regex_search(conf_string, match_address, reg_address)) {
