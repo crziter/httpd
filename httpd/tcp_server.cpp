@@ -60,12 +60,13 @@ void tcp_server::process_event()
     fd_set readset;
 
     timeval tv;
-    tv.tv_usec = 50000;
+    tv.tv_usec = 500000;
     tv.tv_sec = 0;
     while (_running) {
         FD_ZERO(&readset);
         FD_SET(_servers, &readset);
 
+        maxfds = _servers;
         for (auto sm : _socks) {
             if (maxfds < sm.first) maxfds = sm.first;
             FD_SET(sm.first, &readset);
@@ -81,6 +82,10 @@ void tcp_server::process_event()
         }
         else if (rs == 0) {
             /* Time out */
+            
+            IF_DEBUG({
+                std::cout << "select() time out!" << std::endl;
+            });
         }
         else {
             if (FD_ISSET(_servers, &readset)) {
@@ -115,8 +120,8 @@ void tcp_server::process_event()
                     
                     if (len <= 0) {
                         _handler->on_close(*(s.second));
-                        closesocket(s.first);
                         closed_list.push_back(s.first);
+                        closesocket(s.first);
                     }
                     else if (len > 0)
                         _handler->on_receive(*(s.second), buffer);
