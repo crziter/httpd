@@ -33,17 +33,13 @@ public:
     void stop_all();
 
 protected:
-    typedef std::thread * thread_ptr;
-    typedef std::map<socket_t, tcp_socket *> map_sockets;
+    tcp_handler*                        _handler;
+    std::thread                         _threads;
+    socket_t                            _servers;
+    std::map<socket_t, tcp_socket *>    _socks;
+    bool                                _running;
 
-    tcp_handler*    _handler;
-    std::thread     _threads;
-    socket_t        _servers;
-    map_sockets     _socks;
-
-    bool _running;
-
-    void thread_func();
+    void process_event();
 };
 
 #endif
