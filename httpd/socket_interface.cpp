@@ -2,6 +2,5 @@
 
 socket_interface::~socket_interface()
 {
-
 }
 
