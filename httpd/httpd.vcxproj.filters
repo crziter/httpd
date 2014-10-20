@@ -21,9 +21,6 @@
     <ClCompile Include="tcp_socket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tcp_server.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="http_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,18 +63,18 @@
     <ClCompile Include="socket_wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="server_general.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tcp_server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tcp_server.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tcp_socket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tcp_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="http_server.h">
@@ -123,6 +120,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="socket_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server_general.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp_server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

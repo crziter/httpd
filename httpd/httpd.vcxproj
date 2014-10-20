@@ -93,6 +93,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="socket_interface.cpp" />
     <ClCompile Include="socket_wrapper.cpp" />
+    <ClCompile Include="server_general.cpp" />
     <ClCompile Include="tcp_server.cpp" />
     <ClCompile Include="tcp_socket.cpp" />
   </ItemGroup>
@@ -112,10 +113,11 @@
     <ClInclude Include="http_uri.h" />
     <ClInclude Include="socket_interface.h" />
     <ClInclude Include="socket_wrapper.h" />
-    <ClInclude Include="tcp_handler.h" />
+    <ClInclude Include="server_handler.h" />
+    <ClInclude Include="tcp_server.h" />
     <ClInclude Include="tcp_socket.h" />
     <ClInclude Include="port.h" />
-    <ClInclude Include="tcp_server.h" />
+    <ClInclude Include="server_general.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
