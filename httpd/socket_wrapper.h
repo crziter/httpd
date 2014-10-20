@@ -10,8 +10,6 @@ class socket_wrapper
 public:
     socket_wrapper(socket_interface& sock);
 
-//     std::string recv();
-//     int recv(std::string& msg);
     int recv(vector_char& buffer);
 
 private:

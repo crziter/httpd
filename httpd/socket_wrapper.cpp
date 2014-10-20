@@ -3,7 +3,6 @@
 socket_wrapper::socket_wrapper(socket_interface& sock)
     : _sock(sock)
 {
-
 }
 
 int socket_wrapper::recv(vector_char& buffer)
