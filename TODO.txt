@@ -1,3 +1,6 @@
 - Xử lí virtualhost
 - Phục vụ file tĩnh
 - Phục vụ server-side sript (qua CGI)?
+
+Vấn đề hiện hữu:
+- Chưa báo lỗi nếu bind() không thành công
