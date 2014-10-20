@@ -19,7 +19,7 @@ public:
      * Start a listen instance
      * @return -1 if error
      */
-    int start(const char_ptr addr, ushort port);
+    bool start(const char_ptr addr, ushort port);
 
     /**
      * Stop an server instance
@@ -36,14 +36,14 @@ protected:
     typedef std::thread * thread_ptr;
     typedef std::map<socket_t, tcp_socket *> map_sockets;
 
-    std::unique_ptr<tcp_handler> _handler;
-    std::deque<thread_ptr> _threads;
-    std::vector<socket_t> _servers;
-    map_sockets _socks;
+    tcp_handler*    _handler;
+    std::thread     _threads;
+    socket_t        _servers;
+    map_sockets     _socks;
 
     bool _running;
 
-    void thread_func(socket_t server_fd);
+    void thread_func();
 };
 
 #endif

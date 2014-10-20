@@ -7,7 +7,7 @@
 
 tcp_server::tcp_server(tcp_handler_ptr handler)
 {
-    _handler.reset(handler);
+    _handler = handler;
     _running = true;
 }
 
@@ -18,9 +18,11 @@ tcp_server::~tcp_server()
     for (map_sockets::iterator it = std::begin(_socks); it != std::end(_socks); ++it) {
         delete it->second;
     }
+
+    delete _handler;
 }
 
-int tcp_server::start(const char_ptr addr, ushort port)
+bool tcp_server::start(const char_ptr addr, ushort port)
 {
     sockaddr_in info;
 
@@ -29,29 +31,26 @@ int tcp_server::start(const char_ptr addr, ushort port)
     info.sin_family = AF_INET;
     info.sin_port = htons(port);
 
-    socket_t sock = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (sock == INVALID_SOCKET) {
-        return -1;
+    _servers = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (_servers == INVALID_SOCKET) {
+        return false;
     }
 
-    if (::bind(sock, (struct sockaddr *) &info, sizeof(struct sockaddr)) == SOCKET_ERROR) {
-        closesocket(sock);
-        return -1;
+    if (::bind(_servers, (struct sockaddr *) &info, sizeof(struct sockaddr)) == SOCKET_ERROR) {
+        closesocket(_servers);
+        return false;
     }
 
-    if (::listen(sock, 10) == SOCKET_ERROR) {
-        closesocket(sock);
-        return -1;
+    if (::listen(_servers, 10) == SOCKET_ERROR) {
+        closesocket(_servers);
+        return false;
     }
 
-    _servers.push_back(sock);
-    std::thread *th = new std::thread(&tcp_server::thread_func, this, sock);
-    _threads.push_back(th);
-
-    return _threads.size() - 1;
+    _threads = std::thread(&tcp_server::thread_func, this);
+    return true;
 }
 
-void tcp_server::thread_func(socket_t server_fd)
+void tcp_server::thread_func()
 {
     unsigned int maxfds = 0;
     fd_set readset;
@@ -61,15 +60,11 @@ void tcp_server::thread_func(socket_t server_fd)
     tv.tv_sec = 0;
     while (_running) {
         FD_ZERO(&readset);
-        
-        for (std::vector<socket_t>::iterator it = std::begin(_servers); it != std::end(_servers); ++it) {
-            if (maxfds < *it) maxfds = *it;
-            FD_SET(*it, &readset);
-        }
+        FD_SET(_servers, &readset);
 
-        for (map_sockets::iterator it = std::begin(_socks); it != std::end(_socks); ++it) {
-            if (maxfds < it->first) maxfds = it->first;
-            FD_SET(it->first, &readset);
+        for (auto sm : _socks) {
+            if (maxfds < sm.first) maxfds = sm.first;
+            FD_SET(sm.first, &readset);
         }
 
         auto rs = ::select(maxfds + 1, &readset, nullptr, nullptr, &tv);
@@ -84,14 +79,17 @@ void tcp_server::thread_func(socket_t server_fd)
             /* Time out */
         }
         else {
-            if (FD_ISSET(server_fd, &readset)) {
+            if (FD_ISSET(_servers, &readset)) {
                 sockaddr_in info;
                 socklen_t len = sizeof(struct sockaddr);
 
-                socket_t client = ::accept(server_fd, (struct sockaddr *) &info, &len);
+                socket_t client = ::accept(_servers, (struct sockaddr *) &info, &len);
 
-                if (client < 0) {
+                if (client == INVALID_SOCKET) {
                     // error
+                    IF_DEBUG({
+                        std::cout << "Accept new client error!" << std::endl;
+                    });
                 }
                 else 
                 {
@@ -101,7 +99,7 @@ void tcp_server::thread_func(socket_t server_fd)
                     _handler->on_accept(*_socks.at(client));
                 }
 
-                FD_CLR(server_fd, &readset);
+                FD_CLR(_servers, &readset);
             }
 
             std::vector<socket_t> closed_list;
@@ -130,9 +128,7 @@ void tcp_server::thread_func(socket_t server_fd)
 
 void tcp_server::stop_all()
 {
-    for (std::vector<socket_t>::iterator it = std::begin(_servers); it != std::end(_servers); ++it) {
-        closesocket(*it);
-    }
+    closesocket(_servers);
 
     for (map_sockets::iterator it = std::begin(_socks); it != std::end(_socks); ++it) {
         _handler->on_close(*(it->second));
@@ -141,16 +137,8 @@ void tcp_server::stop_all()
     }
 
     _running = false;
-    for (std::deque<thread_ptr>::iterator it = std::begin(_threads); it != std::end(_threads); ++it) {
-        if ((*it)->joinable()) {
-            (*it)->join();
-        }
-
-        delete (*it);
-    }
-
+    if (_threads.joinable())
+        _threads.join();
     
-    _servers.clear();
     _socks.clear();
-    _threads.clear();
 }
