@@ -53,8 +53,12 @@ private:
 
 http_server::http_server(http_handler *handler)
 {
-    _http_handler = handler;
+    IF_WINDOWS({
+        WSADATA wsdata;
+        WSAStartup(MAKEWORD(2, 2), &wsdata);
+    });
 
+    _http_handler = handler;
     _server = new tcp_server(new lowlevel_handler(handler));
 }
 
@@ -64,11 +68,22 @@ http_server::~http_server()
         delete _server;
         delete _http_handler;
     }
+
+    IF_WINDOWS({
+        WSACleanup();
+    });
 }
 
 int http_server::start(const char_ptr addr, ushort port)
 {
     return _server->start(addr, port);
+}
+
+int http_server::start(configuration& conf)
+{
+    _conf = conf;
+
+    return _server->start((char_ptr)_conf.listen_address().c_str(), _conf.http_port());
 }
 
 void http_server::stop()
