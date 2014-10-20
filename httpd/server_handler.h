@@ -1,11 +1,11 @@
-#ifndef __tcp_handler_h__
-#define __tcp_handler_h__
+#ifndef __server_handler_h__
+#define __server_handler_h__
 
 #include <vector>
 #include "port.h"
 #include "socket_interface.h"
 
-class tcp_handler
+class server_handler
 {
 public:
     virtual void on_accept(socket_interface& sock) = 0;
@@ -13,6 +13,6 @@ public:
     virtual void on_close(socket_interface& sock) = 0;
 };
 
-typedef tcp_handler * tcp_handler_ptr;
+typedef server_handler * tcp_handler_ptr;
 
 #endif
