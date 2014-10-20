@@ -73,8 +73,10 @@ bool configuration::load(std::string& conf_file)
             for (int i = 1; i < match_hosts.size(); i+=2) {
                 std::string domain = match_hosts[i].str();
                 std::string host_conf = match_hosts[i + 1].str();
-                host_info *host = nullptr;
+                host_info host;
                 
+                host.domain = domain;
+
                 IF_DEBUG({
                     cout << "Host: '" << domain << "'" << std::endl;
                 });
@@ -85,8 +87,7 @@ bool configuration::load(std::string& conf_file)
                     std::string location = match_loc[1].str();
 
                     // TODO: Check if location exists
-                    host = new host_info();
-                    host->location = location;
+                    host.location = location;
 
                     IF_DEBUG({
                         cout << "\tLocation: '" << location << "'" << std::endl;
@@ -109,8 +110,8 @@ bool configuration::load(std::string& conf_file)
 
                         if (regex_search(host_conf, match_cert, reg_cert)) {
                             cert = match_cert[1].str();
-                            host->ssl = true;
-                            host->cert_file = cert;
+                            host.ssl = true;
+                            host.cert_file = cert;
 
                             IF_DEBUG({
                                 cout << "\tCert: " << cert << std::endl;
@@ -119,8 +120,8 @@ bool configuration::load(std::string& conf_file)
                     }
                 }
 
-                if (host != nullptr)
-                    _hosts[domain] = host;
+                if (host.location.compare("") != 0)
+                    _hosts.push_back(host);
             }
 
             conf_hosts = match_hosts.suffix().str();
@@ -138,14 +139,12 @@ configuration::configuration()
     _http_port = 80;
     _https_port = 443;
     _address = "0.0.0.0";
+
+    _hosts.clear();
 }
 
 configuration::~configuration()
 {
-    for (auto h : _hosts) {
-        delete (host_info *)h.second;
-    }
-
     _hosts.clear();
 }
 

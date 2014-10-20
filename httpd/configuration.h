@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <string>
-#include <map>
+#include <deque>
 #include "port.h"
 
 struct host_info
 {
+    std::string domain;
     std::string location;
     std::string cert_file;
     bool ssl;
@@ -36,7 +37,7 @@ public:
 
 private:
     /* host <-> location */
-    std::map<std::string, host_info *> _hosts;
+    std::deque<host_info> _hosts;
     ushort _http_port;
     ushort _https_port;
     int _workers;
