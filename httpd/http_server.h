@@ -17,7 +17,7 @@ public:
     void stop();
 
 private:
-    tcp_server *    _server;
+    server_general *    _server;
     http_handler *  _http_handler;
     configuration   _conf;
 };

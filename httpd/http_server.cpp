@@ -6,7 +6,7 @@
 #include "http_task.h"
 #include "http_handler.h"
 
-class lowlevel_handler : public tcp_handler
+class lowlevel_handler : public server_handler
 {
 public:
     lowlevel_handler(http_handler *handler) {
