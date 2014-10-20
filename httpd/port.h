@@ -40,5 +40,7 @@ typedef unsigned short ushort;
 typedef std::vector<char> vector_char;
 
 #define IF_DEBUG(x) x
+#define TWO_NEWLINE "(?:\\r\\n\\r\\n|\\n\\n)"
+#define NEWLINE "(?:\\\r\\n|\\n)"
 
 #endif // __port_h__
