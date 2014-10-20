@@ -11,7 +11,7 @@ using std::smatch;
 bool http_request::parse(const std::string& data)
 {
     string buff = data;
-    regex rex_method("^(\\w+)\\s+?(\\S+)\\s+?(\\S+)\r\n");
+    regex rex_method("^(\\w+)\\s+?(\\S+)\\s+?(\\S+)\\s*?" NEWLINE);
     smatch match_method;
     if (regex_search(buff, match_method, rex_method)) {
         if (match_method.size() > 0) {
@@ -34,7 +34,7 @@ bool http_request::parse(const std::string& data)
     }
     else return false;
 
-    regex rex_header("^([a-zA-Z0-9\\-]+)\\s*?:\\s*(.+)(?:\\r\\n)?");
+    regex rex_header("^([a-zA-Z0-9\\-]+)\\s*?:\\s*(.+?)" NEWLINE);
     smatch match_header;
     int content_length = 0;
     while (regex_search(buff, match_header, rex_header)) {
