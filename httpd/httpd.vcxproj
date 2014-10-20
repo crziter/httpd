@@ -78,6 +78,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="http_connection.cpp" />
     <ClCompile Include="dispatcher.cpp" />
     <ClCompile Include="http_header.cpp" />
@@ -93,6 +95,8 @@
     <ClCompile Include="tcp_socket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="configuration.h" />
+    <ClInclude Include="file_operations.h" />
     <ClInclude Include="http_connection.h" />
     <ClInclude Include="http_handler.h" />
     <ClInclude Include="dispatcher.h" />

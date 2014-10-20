@@ -54,6 +54,12 @@
     <ClCompile Include="http_response.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="file_operations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="configuration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -99,6 +105,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="http_processor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_operations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
