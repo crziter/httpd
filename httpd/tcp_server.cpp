@@ -7,11 +7,6 @@
 
 tcp_server::tcp_server(tcp_handler_ptr handler)
 {
-    IF_WINDOWS({
-        WSADATA wsdata;
-        WSAStartup(MAKEWORD(2, 2), &wsdata);
-    });
-
     _handler.reset(handler);
     _running = true;
 }
@@ -23,10 +18,6 @@ tcp_server::~tcp_server()
     for (map_sockets::iterator it = std::begin(_socks); it != std::end(_socks); ++it) {
         delete it->second;
     }
-
-    IF_WINDOWS({
-        WSACleanup();
-    });
 }
 
 int tcp_server::start(const char_ptr addr, ushort port)
