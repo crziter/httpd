@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
 {    
     std::cout << "Waiting for clients ..." << std::endl;
     configuration conf;
-    conf.load(std::string("c:\\httpd\\httpd.conf"));
+    std::string conf_file = std::string(CONFIG_FILE);
+    conf.load(conf_file);
 
     {
         http_server http(new handler(conf));
