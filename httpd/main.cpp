@@ -24,23 +24,27 @@ private:
 
 int main(int argc, char *argv[]) 
 {    
-    std::cout << "Waiting for clients ..." << std::endl;
+    std::cout << "Loading configuration";
     configuration conf;
     std::string conf_file = std::string(CONFIG_FILE);
-    conf.load(conf_file);
-
+    if (conf.load(conf_file))
     {
+        std::cout << "Loaded" << std::endl;
+        
         http_server http(new handler(conf));
-        http.start(conf);
+        if (http.start(conf)) {
+            std::cout << "Http server was started" << std::endl << "Waiting for clients ... " << std::endl;
 
-        std::cin.get();
-
-        http.stop();
+            std::cin.get();
+            http.stop();
+        } else {
+            std::cout << "Can not start http server" << std::endl;
+        }
+    } else {
+        std::cout << "Couldn\'t load config file" << std::endl;
+        return -1;
     }
 
     std::cout << "Closed!" << std::endl;
-
-    std::cin.get();
-
     return 0;
 }
