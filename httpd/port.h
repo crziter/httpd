@@ -5,7 +5,8 @@
 #include <windows.h>
 
 #define IF_WINDOWS(x) x
-#define CONFIG_FILE "\\\\psf\\Home\\Desktop\\final\\httpd\\conf\\httpd.conf"
+#define CONFIG_FILE "conf\\httpd.conf"
+#define ERROR_400 "errors\\400.html"
 
 typedef int socklen_t;
 typedef SOCKET socket_t;
@@ -17,7 +18,7 @@ typedef SOCKET socket_t;
 #include <unistd.h>
 
 #if defined(__APPLE__)
-#define CONFIG_FILE "/Users/binhtruong/Desktop/final/httpd/conf/httpd.conf"
+#define CONFIG_FILE "conf/httpd.conf"
 #elif defined(__linux__)
 #endif
 
@@ -42,5 +43,6 @@ typedef std::vector<char> vector_char;
 #define IF_DEBUG(x) x
 #define TWO_NEWLINE "(\\r\\n\\r\\n|\\n\\n)"
 #define NEWLINE "(\\\r\\n|\\n)"
+#define BLOCK(x) x
 
 #endif // __port_h__
