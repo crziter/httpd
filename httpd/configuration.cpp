@@ -14,8 +14,8 @@ using std::cout;
 bool configuration::load(std::string& conf_file)
 {
     std::string conf_string;
-
-    if (file_operations::get_content(conf_file, conf_string)) {
+    
+    if (file_operations::get_content_jail(conf_file, conf_string)) {
         regex reg_address("address\\s*=\\s*([\\d\\.]+)\\s*");
         smatch match_address;
         if (regex_search(conf_string, match_address, reg_address)) {
