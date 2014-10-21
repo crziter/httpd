@@ -1,4 +1,5 @@
 #include "http_task.h"
+#include "http_error.h"
 
 http_task::http_task(http_request& rq, http_response& rp, configuration& conf)
     :_request(rq), _response(rp), _conf(conf)
@@ -20,8 +21,8 @@ void http_task::run()
         _response.content(found);
     }
     else {
-        std::string not_found = "Host not found :)";
-        _response.content(not_found);
+        _response.content(http_error::error(http_status::BAD_REQUEST));
+        _response.header().append(http_header_str(header_list::CONTENT_TYPE), content_type_str(content_type::TEXT_HTML));
     }
 
     _response.build();
