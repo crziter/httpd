@@ -5,7 +5,7 @@ using std::string;
 using std::begin;
 using std::end;
 
-void http_header::append(std::string& key, std::string& value)
+void http_header::append(std::string key, std::string value)
 {
     _headers[key] = value;
 }

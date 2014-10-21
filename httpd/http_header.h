@@ -7,7 +7,8 @@
 class http_header
 {
 public:
-    void append(std::string& key, std::string& value);
+    void append(std::string key, std::string value);
+
     std::string& get(std::string key);
     std::string build();
 
