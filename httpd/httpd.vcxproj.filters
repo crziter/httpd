@@ -69,6 +69,9 @@
     <ClCompile Include="tcp_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="http_error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="server_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="http_error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
