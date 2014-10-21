@@ -5,3 +5,4 @@
 Vấn đề hiện hữu:
 - Chưa báo lỗi nếu bind() không thành công
 - Nếu request sai cú pháp thì khá nhiều lỗi xuất hiện [nghiêm trọng cần sửa]
+- Các header chưa đưa về kiểu chuẩn hóa (như Host thay vì host hoặc hOsT) trước khi lưu
