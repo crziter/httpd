@@ -22,6 +22,11 @@ void http_response::header(http_header& headers)
     _header = headers;
 }
 
+http_header& http_response::header()
+{
+    return _header;
+}
+
 unsigned int http_response::flush()
 {
     auto rs = _conn.socket().send((char_ptr)_data.c_str(), (int)_data.length() - _sent);

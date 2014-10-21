@@ -16,6 +16,8 @@ public:
     void header(http_header& headers);
     void content(std::string& content);
 
+    http_header& header();
+
     void build();
 
     unsigned int flush();
