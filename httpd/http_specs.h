@@ -7,11 +7,25 @@ enum http_method {
 };
 
 enum http_status {
-    OK = 200
+    OK = 200,
+    BAD_REQUEST = 400
+};
+
+enum header_list {
+    CONTENT_TYPE,
+    CONTENT_LENGTH,
+    HOST,
+    SERVER
+};
+
+enum content_type {
+    TEXT_HTML
 };
 
 extern const char * http_method_str[];
 
 const char * http_status_str(http_status status);
+const char * http_header_str(header_list header);
+const char * content_type_str(content_type type);
 
 #endif
