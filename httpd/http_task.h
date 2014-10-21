@@ -6,17 +6,18 @@
 #include <mutex>
 #include "http_request.h"
 #include "http_response.h"
-
+#include "configuration.h"
 
 class http_task
 {
 public:
-    http_task(http_request& rq, http_response& rp);
+    http_task(http_request& rq, http_response& rp, configuration& conf);
     void run();
 
 private:
     http_request _request;
     http_response _response;
+    configuration& _conf;
 };
 
 typedef http_task * http_task_ptr;
