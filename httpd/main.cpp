@@ -9,7 +9,7 @@ class handler : public http_handler
 {
 public:
     handler(configuration& conf)
-        : _processor(http_processor(conf.num_workers()))
+        : _processor(http_processor(conf))
     {}
 
     void on_request(http_connection& conn) override
