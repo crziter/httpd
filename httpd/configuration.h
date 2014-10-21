@@ -27,7 +27,7 @@ public:
     ~configuration();
 
     bool load(std::string& conf_file);
-    host_info& config_for_host(std::string& host);
+    host_info* config_for_host(std::string& host);
     
     ushort http_port();
     ushort https_port();

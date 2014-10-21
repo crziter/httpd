@@ -167,3 +167,13 @@ int configuration::num_workers()
 {
     return _workers;
 }
+
+host_info* configuration::config_for_host(std::string& host)
+{
+    for (host_info& h : _hosts) {
+        if (h.domain.compare(host) == 0)
+            return &h;
+    }
+
+    return nullptr;
+}
