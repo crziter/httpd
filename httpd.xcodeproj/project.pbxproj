@@ -22,6 +22,8 @@
 		1C8D75C219F17994006E8282 /* tcp_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75B719F17994006E8282 /* tcp_socket.cpp */; };
 		1C8D90C519F2A08A00867029 /* http_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C319F2A08A00867029 /* http_processor.cpp */; };
 		1C8D90C719F2EBC800867029 /* http_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D90C619F2EBC800867029 /* http_response.cpp */; };
+		1CD7025F19F5E967009A6D7D /* http_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7025A19F5E967009A6D7D /* http_error.cpp */; };
+		1CD7026019F5E967009A6D7D /* server_general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CD7025C19F5E967009A6D7D /* server_general.cpp */; };
 		1CF086C319F5AEAD00D70187 /* socket_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */; };
 		1CF086C419F5AEAD00D70187 /* socket_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */; };
 /* End PBXBuildFile section */
@@ -63,7 +65,6 @@
 		1C8D75AF19F17994006E8282 /* http_uri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_uri.cpp; sourceTree = "<group>"; };
 		1C8D75B019F17994006E8282 /* http_uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_uri.h; sourceTree = "<group>"; };
 		1C8D75B319F17994006E8282 /* port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = port.h; sourceTree = "<group>"; };
-		1C8D75B419F17994006E8282 /* tcp_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_handler.h; sourceTree = "<group>"; };
 		1C8D75B519F17994006E8282 /* tcp_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcp_server.cpp; sourceTree = "<group>"; };
 		1C8D75B619F17994006E8282 /* tcp_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp_server.h; sourceTree = "<group>"; };
 		1C8D75B719F17994006E8282 /* tcp_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcp_socket.cpp; sourceTree = "<group>"; };
@@ -71,6 +72,12 @@
 		1C8D90C319F2A08A00867029 /* http_processor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_processor.cpp; sourceTree = "<group>"; };
 		1C8D90C419F2A08A00867029 /* http_processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_processor.h; sourceTree = "<group>"; };
 		1C8D90C619F2EBC800867029 /* http_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_response.cpp; sourceTree = "<group>"; };
+		1CD7025919F5E967009A6D7D /* file_operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_operations.h; sourceTree = "<group>"; };
+		1CD7025A19F5E967009A6D7D /* http_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_error.cpp; sourceTree = "<group>"; };
+		1CD7025B19F5E967009A6D7D /* http_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_error.h; sourceTree = "<group>"; };
+		1CD7025C19F5E967009A6D7D /* server_general.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_general.cpp; sourceTree = "<group>"; };
+		1CD7025D19F5E967009A6D7D /* server_general.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_general.h; sourceTree = "<group>"; };
+		1CD7025E19F5E967009A6D7D /* server_handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_handler.h; sourceTree = "<group>"; };
 		1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket_interface.cpp; sourceTree = "<group>"; };
 		1CF086C019F5AEAD00D70187 /* socket_interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_interface.h; sourceTree = "<group>"; };
 		1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket_wrapper.cpp; sourceTree = "<group>"; };
@@ -107,6 +114,12 @@
 		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
 			isa = PBXGroup;
 			children = (
+				1CD7025919F5E967009A6D7D /* file_operations.h */,
+				1CD7025A19F5E967009A6D7D /* http_error.cpp */,
+				1CD7025B19F5E967009A6D7D /* http_error.h */,
+				1CD7025C19F5E967009A6D7D /* server_general.cpp */,
+				1CD7025D19F5E967009A6D7D /* server_general.h */,
+				1CD7025E19F5E967009A6D7D /* server_handler.h */,
 				1CF086BF19F5AEAD00D70187 /* socket_interface.cpp */,
 				1CF086C019F5AEAD00D70187 /* socket_interface.h */,
 				1CF086C119F5AEAD00D70187 /* socket_wrapper.cpp */,
@@ -136,7 +149,6 @@
 				1C8D75AF19F17994006E8282 /* http_uri.cpp */,
 				1C8D75B019F17994006E8282 /* http_uri.h */,
 				1C8D75B319F17994006E8282 /* port.h */,
-				1C8D75B419F17994006E8282 /* tcp_handler.h */,
 				1C8D75B519F17994006E8282 /* tcp_server.cpp */,
 				1C8D75B619F17994006E8282 /* tcp_server.h */,
 				1C8D75B719F17994006E8282 /* tcp_socket.cpp */,
@@ -197,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD7026019F5E967009A6D7D /* server_general.cpp in Sources */,
 				1C8D75BF19F17994006E8282 /* http_task.cpp in Sources */,
 				1CF086C419F5AEAD00D70187 /* socket_wrapper.cpp in Sources */,
 				1C8D75BD19F17994006E8282 /* http_server.cpp in Sources */,
@@ -205,6 +218,7 @@
 				1C33525119F57E0C0011825D /* configuration.cpp in Sources */,
 				1C33525219F57E0C0011825D /* file_operations.cpp in Sources */,
 				1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */,
+				1CD7025F19F5E967009A6D7D /* http_error.cpp in Sources */,
 				1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */,
 				1C8D75BA19F17994006E8282 /* http_connection.cpp in Sources */,
 				1C8D75BC19F17994006E8282 /* http_request.cpp in Sources */,
