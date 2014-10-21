@@ -11,8 +11,8 @@ public:
     http_server(http_handler *handler);
     ~http_server();
 
-    int start(const char_ptr addr, ushort port);
-    int start(configuration& conf);
+    bool start(const char_ptr addr, ushort port);
+    bool start(configuration& conf);
 
     void stop();
 

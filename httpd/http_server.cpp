@@ -74,12 +74,12 @@ http_server::~http_server()
     });
 }
 
-int http_server::start(const char_ptr addr, ushort port)
+bool http_server::start(const char_ptr addr, ushort port)
 {
     return _server->start(addr, port);
 }
 
-int http_server::start(configuration& conf)
+bool http_server::start(configuration& conf)
 {
     _conf = conf;
 
