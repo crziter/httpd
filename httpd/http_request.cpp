@@ -34,7 +34,7 @@ bool http_request::parse(const std::string& data)
     }
     else return false;
 
-    regex rex_header("^([a-zA-Z0-9\\-]+)\\s*?:\\s*(.+?)" NEWLINE);
+    regex rex_header("^([a-zA-Z\\d\\-]+)\\s*:\\s*(.+)(?:\\r\\n|\\n|$)");
     smatch match_header;
     int content_length = 0;
     while (regex_search(buff, match_header, rex_header)) {
@@ -44,13 +44,27 @@ bool http_request::parse(const std::string& data)
         if (_stricmp(key.c_str(), "Content-Length") == 0) {
             content_length = std::stoi(value);
         }
+        else if (_stricmp(key.c_str(), "Host") == 0) {
+            if (value.find_first_of(':') == string::npos) { // Not found
+                _host = value;
+                _port = 80;
+            } else {
+                regex reg_host("^\\s*([\\da-zA-Z\\-\\.]+):(\\d+)\\s*$");
+                smatch match_host;
+                if (regex_search(value, match_host, reg_host)) {
+                    _host = match_host[1].str();
+                    _port = std::stoi(match_host[2].str());
+                }
+            }
+        }
 
         _header.append(key, value);
         buff = match_header.suffix().str();
     }
 
     if (this->_method == http_method::POST) {
-        regex fn_content("\\r\\n([^]+)$");
+        // TODO: May this check wrong (may non-capture will be captured :v)
+        regex fn_content("(?:\\r\\n|\\n)([^]+)$");
         smatch m_content;
         if (regex_match(buff, m_content, fn_content)) {
             this->_content = m_content[1].str();
@@ -84,4 +98,16 @@ std::string& http_request::content()
 {
     return _content;
 }
+
+http_header& http_request::header()
+{
+    return _header;
+}
+
+std::string& http_request::host()
+{
+    return _host;
+}
+
+
 

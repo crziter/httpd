@@ -10,7 +10,12 @@ void http_header::append(std::string& key, std::string& value)
     _headers[key] = value;
 }
 
-std::string& http_header::get(std::string& key)
+// std::string& http_header::get(std::string& key)
+// {
+//     return _headers[key];
+// }
+
+std::string& http_header::get(std::string key)
 {
     return _headers[key];
 }
