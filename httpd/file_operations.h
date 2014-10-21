@@ -9,6 +9,12 @@ class file_operations
 public:
     static bool exist(std::string& path);
     static bool get_content(std::string& path, std::string& content);
+
+    static bool exist_jail(std::string& path);
+    static bool get_content_jail(std::string& path, std::string& content);
+
+private:
+    static std::string jail_path(std::string& path);
 };
 
 #endif
