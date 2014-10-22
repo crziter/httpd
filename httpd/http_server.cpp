@@ -15,9 +15,9 @@ public:
 
     void on_accept(socket_interface & sock) override
     {
-        IF_DEBUG({
-            std::cout << "Client has connected" << std::endl;
-        });
+//         IF_DEBUG({
+//             std::cout << "Client has connected" << std::endl;
+//         });
 
         _conns[&sock] = new http_connection(&sock);
     }
@@ -26,9 +26,9 @@ public:
     {
         auto conn = _conns.at(&sock);
 
-        IF_DEBUG({
-            std::cout << "Received " << data.size() << " bytes from client" << std::endl;
-        });
+//         IF_DEBUG({
+//             std::cout << "Received " << data.size() << " bytes from client" << std::endl;
+//         });
 
         conn->append(data);
         while (conn->has_request_pending()) {
@@ -38,9 +38,9 @@ public:
 
     void on_close(socket_interface & sock) override
     {
-        IF_DEBUG({
-            std::cout << "Client is about to disconnect" << std::endl;
-        });
+//         IF_DEBUG({
+//             std::cout << "Client is about to disconnect" << std::endl;
+//         });
 
         _conns.erase(&sock);
     }
