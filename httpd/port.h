@@ -6,7 +6,9 @@
 
 #define IF_WINDOWS(x) x
 #define CONFIG_FILE "conf\\httpd.conf"
+#define MIME_FILE "conf\\mime.types"
 #define ERROR_400 "errors\\400.html"
+#define ERROR_404 "errors\\404.html"
 
 typedef int socklen_t;
 typedef SOCKET socket_t;
@@ -40,7 +42,12 @@ typedef char * char_ptr;
 typedef unsigned short ushort;
 typedef std::vector<char> vector_char;
 
+#if defined(DEBUG) || defined(_DEBUG)
 #define IF_DEBUG(x) x
+#else
+#define IF_DEBUG(x)
+#endif
+
 #define TWO_NEWLINE "(\\r\\n\\r\\n|\\n\\n)"
 #define NEWLINE "(\\\r\\n|\\n)"
 #define BLOCK(x) x
