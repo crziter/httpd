@@ -52,7 +52,9 @@ void http_response::build()
     std::stringstream stream;
 
     stream << _version << " " << _status << " " << http_status_str(_status) << "\r\n";
-    //header;
+
+    stream << _header.build();
+    
     stream << "Content-Length: " << _content.length() << "\r\n";
     stream << "\r\n" << _content;
 
