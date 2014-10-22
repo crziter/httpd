@@ -29,6 +29,10 @@ int main(int argc, char *argv[])
     std::string conf_file = std::string(CONFIG_FILE);
     if (conf.load(conf_file))
     {
+        {
+            std::string mime_f(MIME_FILE);
+            conf.load_mime(mime_f);
+        }
         std::cout << "Loaded" << std::endl;
         
         http_server http(new handler(conf));
