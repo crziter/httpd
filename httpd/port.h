@@ -28,6 +28,10 @@ typedef SOCKET socket_t;
 #define INVALID_SOCKET (0)
 #define SOCKET_ERROR (-1)
 
+#define ERROR_400 "errors/400.html"
+#define ERROR_404 "errors/404.html"
+#define MIME_FILE "conf/mime.types"
+
 typedef int socket_t;
 #define closesocket(fd) close(fd)
 #define _stricmp(x,y) strcasecmp(x,y)
