@@ -133,6 +133,11 @@ void server_general::process_event()
 
 void server_general::stop_all()
 {
+    _running = false;
+    
+    if (_threads.joinable())
+        _threads.join();
+
     closesocket(_servers);
 
     for (auto s : _socks) {
@@ -140,10 +145,6 @@ void server_general::stop_all()
         delete s.second;
         closesocket(s.first);
     }
-
-    _running = false;
-    if (_threads.joinable())
-        _threads.join();
     
     _socks.clear();
 }
