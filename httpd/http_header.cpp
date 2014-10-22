@@ -24,13 +24,8 @@ std::string http_header::build()
 {
     std::stringstream stream;
 
-    auto size = _headers.size();
-    unsigned int index = 1;
     for (map<string, string>::iterator it = begin(_headers); it != end(_headers); ++it) {
-        if (index < size)
-            stream << it->first << ": " << it->second << "\r\n";
-        else
-            stream << it->first << ": " << it->second;
+        stream << it->first << ": " << it->second << "\r\n";
     }
 
     return stream.str();
