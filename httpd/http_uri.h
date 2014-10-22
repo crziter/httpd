@@ -6,11 +6,18 @@
 class http_uri
 {
 public:
-    void decode(std::string& data);
-    std::string& uri();
+    void parse(std::string& data);
+    std::string& path();
+    std::string& query();
+    std::string file_extension();
 
 private:
-    std::string _uri;
+    std::string _resource;
+    std::string _path;
+    std::string _query;
+    std::string _hash;
+
+    std::string decode(std::string& msg);
 };
 
 #endif
