@@ -47,7 +47,8 @@ void http_uri::parse(std::string& data)
     smatch match_path;
     if (regex_search(_resource, match_path, reg_path)) {
         tmp = match_path.suffix().str();
-        _path = decode(match_path[1].str());
+        std::string path_tmp = match_path[1].str();
+        _path = decode(path_tmp);
     } else {
         _path = decode(_resource);
         quit = true;
