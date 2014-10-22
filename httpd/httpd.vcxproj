@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="content_service.cpp" />
     <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="http_connection.cpp" />
     <ClCompile Include="dispatcher.cpp" />
@@ -100,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="configuration.h" />
+    <ClInclude Include="content_service.h" />
     <ClInclude Include="file_operations.h" />
     <ClInclude Include="http_connection.h" />
     <ClInclude Include="http_error.h" />
