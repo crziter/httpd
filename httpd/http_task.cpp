@@ -26,7 +26,8 @@ void http_task::run()
         _response.content(cs.content());
     } else {
         _response.status(http_status::OK);
-        _response.content(http_error::error(http_status::BAD_REQUEST));
+        std::string err_content = http_error::error(http_status::BAD_REQUEST);
+        _response.content(err_content);
         _response.header().append(http_header_str(header_list::CONTENT_TYPE), content_type_str(content_type::TEXT_HTML));
     }
 
