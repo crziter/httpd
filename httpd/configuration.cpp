@@ -139,6 +139,7 @@ configuration::configuration()
     _http_port = 80;
     _https_port = 443;
     _address = "0.0.0.0";
+    _plain_text = "plain/text";
 
     _hosts.clear();
 }
@@ -176,4 +177,38 @@ host_info* configuration::config_for_host(std::string& host)
     }
 
     return nullptr;
+}
+
+bool configuration::load_mime(std::string& mime_file)
+{
+    std::string conf_string;
+
+    if (file_operations::get_content_jail(mime_file, conf_string)) {
+        regex reg_mime("(\\S+)\\s+?(\\S+)");
+        smatch match_mime;
+
+        IF_DEBUG({
+            std::cout << "List of loaded mime types:" << std::endl;
+        });
+        
+        while (regex_search(conf_string, match_mime, reg_mime)) {
+            IF_DEBUG({
+                std::cout << match_mime[1].str() << "\t" << match_mime[2].str() << std::endl;
+            });
+
+            _mime_types[match_mime[1].str()] = match_mime[2].str();
+            conf_string = match_mime.suffix().str();
+        }
+    }
+    else return false;
+
+    return true;
+}
+
+std::string& configuration::mime_of(std::string ext)
+{
+    if (_mime_types.find(ext) == std::end(_mime_types))
+        return _plain_text;
+
+    return _mime_types[ext];
 }

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <deque>
+#include <map>
 #include "port.h"
 
 struct host_info
@@ -27,10 +28,14 @@ public:
     ~configuration();
 
     bool load(std::string& conf_file);
+    bool load_mime(std::string& mime_file);
+
     host_info* config_for_host(std::string& host);
     
     ushort http_port();
     ushort https_port();
+
+    std::string& mime_of(std::string ext);
 
     std::string& listen_address();
     int num_workers();
@@ -43,6 +48,9 @@ private:
     int _workers;
     std::string _address;
     std::string _server;
+
+    std::map<std::string, std::string> _mime_types;
+    std::string _plain_text;
 };
 
 #endif
