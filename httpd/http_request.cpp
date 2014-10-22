@@ -19,7 +19,7 @@ bool http_request::parse(const std::string& data)
             string uri = match_method[2].str();
             string version = match_method[3].str();
 
-            this->_uri.decode(uri);
+            this->_uri.parse(uri);
             this->_http_version = version;
 
             if (_stricmp(method.c_str(), http_method_str[http_method::GET]) == 0) {
