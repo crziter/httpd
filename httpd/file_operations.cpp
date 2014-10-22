@@ -32,24 +32,11 @@ bool file_operations::get_content(std::string& path, std::string& content)
 {
     if (!exist(path)) return false;
 
-    ifstream f;
-    char *buff = nullptr;
-    f.open(path);
-    if (f.is_open()) {
-        int length;
-        f.seekg(0, ios::end);
-        length = f.tellg();
-        buff = new char[length + 1];
-        f.seekg(0, ios::beg);
-
-        f.read(buff, length);
-        buff[length] = 0;
-
-        content.clear();
-        content.append(buff, length + 1);
-
-        delete[] buff;
-        f.close();
+    ifstream ifs;
+    ifs.open(path, std::ios::in | std::ios::binary);
+    if (ifs.is_open()) {
+        content = std::string(std::istreambuf_iterator<char>(ifs), std::istreambuf_iterator<char>());
+        ifs.close();
     }
 
     return true;
@@ -76,4 +63,22 @@ bool file_operations::get_content_jail(std::string& path, std::string& content)
     std::string rpath = jail_path(path);
     return get_content(rpath, content);
 }
+
+std::string file_operations::convert_path(std::string& path)
+{
+#if defined(WIN32) || defined(_WIN32)
+    std::string tmp = path;
+
+    for(int i=0; i<tmp.length(); ++i) {
+        if (tmp[i] == '/') {
+            tmp[i] = '\\';
+        }
+    }
+
+    return tmp;
+#else
+    return path;
+#endif
+}
+
 

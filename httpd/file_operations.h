@@ -13,6 +13,8 @@ public:
     static bool exist_jail(std::string& path);
     static bool get_content_jail(std::string& path, std::string& content);
 
+    static std::string convert_path(std::string& path);
+
 private:
     static std::string jail_path(std::string& path);
 };
