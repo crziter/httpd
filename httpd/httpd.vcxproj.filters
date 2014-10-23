@@ -144,4 +144,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="libeay32.lib" />
+    <Library Include="ssleay32.lib" />
+  </ItemGroup>
 </Project>
