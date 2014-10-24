@@ -15,9 +15,9 @@ public:
 
     void on_accept(socket_interface & sock) override
     {
-//         IF_DEBUG({
-//             std::cout << "Client has connected" << std::endl;
-//         });
+        IF_DEBUG({
+            std::cout << "Client has connected" << std::endl;
+        });
 
         _conns[&sock] = new http_connection(&sock);
     }
@@ -26,9 +26,9 @@ public:
     {
         auto conn = _conns.at(&sock);
 
-//         IF_DEBUG({
-//             std::cout << "Received " << data.size() << " bytes from client" << std::endl;
-//         });
+        IF_DEBUG({
+            std::cout << "Received " << data.size() << " bytes from client" << std::endl;
+        });
 
         conn->append(data);
         while (conn->has_request_pending()) {
@@ -38,9 +38,9 @@ public:
 
     void on_close(socket_interface & sock) override
     {
-//         IF_DEBUG({
-//             std::cout << "Client is about to disconnect" << std::endl;
-//         });
+        IF_DEBUG({
+            std::cout << "Client is about to disconnect" << std::endl;
+        });
 
         _conns.erase(&sock);
     }
@@ -59,34 +59,55 @@ http_server::http_server(http_handler *handler)
     });
 
     _http_handler = handler;
-    _server = new tcp_server(new lowlevel_handler(handler));
+
+    _lowlevel_handler = new lowlevel_handler(handler);
+    _tcp_server = new tcp_server(_lowlevel_handler);
+    _ssl_server = new ssl_server(_lowlevel_handler);
+
+    std::string cert_file = "C:\\httpd\\cert.pem";
+    std::string key_file = "C:\\httpd\\key.pem";
+    if (_ssl_server->init(cert_file, key_file) == false) {
+        std::cout << "_ssl_server->init() error" << std::endl;
+        delete _ssl_server;
+        _ssl_server = nullptr;
+    }
 }
 
 http_server::~http_server()
 {
-    if (_server != nullptr) {
-        delete _server;
-        delete _http_handler;
+    if (_tcp_server != nullptr) {
+        delete _tcp_server;
     }
+
+    if (_ssl_server != nullptr) {
+        delete _ssl_server;
+    }
+
+    delete _http_handler;
 
     IF_WINDOWS({
         WSACleanup();
     });
+
+    delete _lowlevel_handler;
 }
 
 bool http_server::start(const char_ptr addr, ushort port)
 {
-    return _server->start(addr, port);
+    return _tcp_server->start(addr, port);
 }
 
 bool http_server::start(configuration& conf)
 {
     _conf = conf;
 
-    return _server->start((char_ptr)_conf.listen_address().c_str(), _conf.http_port());
+    _tcp_server->start((char_ptr)_conf.listen_address().c_str(), _conf.http_port());
+    _ssl_server->start((char_ptr)_conf.listen_address().c_str(), _conf.https_port());
+
+    return true;
 }
 
 void http_server::stop()
 {
-    _server->stop_all();
+    _tcp_server->stop_all();
 }
