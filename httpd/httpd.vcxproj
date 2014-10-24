@@ -41,11 +41,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../w32_lib;$(IncludePath)</IncludePath>
+    <IncludePath>./w32_lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>../w32_lib;$(IncludePath)</IncludePath>
+    <IncludePath>./w32_lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -98,6 +98,8 @@
     <ClCompile Include="socket_interface.cpp" />
     <ClCompile Include="socket_wrapper.cpp" />
     <ClCompile Include="server_general.cpp" />
+    <ClCompile Include="ssl_server.cpp" />
+    <ClCompile Include="ssl_socket.cpp" />
     <ClCompile Include="tcp_server.cpp" />
     <ClCompile Include="tcp_socket.cpp" />
   </ItemGroup>
@@ -120,6 +122,8 @@
     <ClInclude Include="socket_interface.h" />
     <ClInclude Include="socket_wrapper.h" />
     <ClInclude Include="server_handler.h" />
+    <ClInclude Include="ssl_server.h" />
+    <ClInclude Include="ssl_socket.h" />
     <ClInclude Include="tcp_server.h" />
     <ClInclude Include="tcp_socket.h" />
     <ClInclude Include="port.h" />
