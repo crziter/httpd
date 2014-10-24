@@ -23,7 +23,7 @@ server_general::~server_general()
         delete sh.second;
     }
 
-    delete _handler;
+    // delete _handler;
 }
 
 bool server_general::start(const char_ptr addr, ushort port)
