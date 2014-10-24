@@ -1,5 +1,5 @@
-#ifndef __socket_h__
-#define __socket_h__
+#ifndef __tcp_socket_h__
+#define __tcp_socket_h__
 
 #include <vector>
 #include <string>
