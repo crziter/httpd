@@ -50,5 +50,6 @@ int main(int argc, char *argv[])
     }
 
     std::cout << "Closed!" << std::endl;
+    std::cin.get();
     return 0;
 }
