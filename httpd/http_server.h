@@ -1,6 +1,7 @@
 #ifndef __http_server_h__
 #define __http_server_h__
 
+#include "ssl_server.h"
 #include "tcp_server.h"
 #include "http_handler.h"
 #include "configuration.h"
@@ -17,7 +18,10 @@ public:
     void stop();
 
 private:
-    server_general *    _server;
+    server_handler *_lowlevel_handler;
+    tcp_server *    _tcp_server;
+    ssl_server *    _ssl_server;
+
     http_handler *  _http_handler;
     configuration   _conf;
 };
