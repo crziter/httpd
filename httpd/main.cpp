@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
         }
         std::cout << "Loaded" << std::endl;
         
-        http_server http(new handler(conf));
-        if (http.start(conf)) {
+        http_server http(new handler(conf), conf);
+        if (http.start()) {
             std::cout << "Http server was started" << std::endl << "Waiting for clients ... " << std::endl;
 
             std::cin.get();
