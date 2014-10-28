@@ -11,9 +11,10 @@
 		1C17818119F7AAF900E60148 /* content_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C17817F19F7AAF900E60148 /* content_service.cpp */; };
 		1C33525119F57E0C0011825D /* configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C33524E19F57E0C0011825D /* configuration.cpp */; };
 		1C33525219F57E0C0011825D /* file_operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C33525019F57E0C0011825D /* file_operations.cpp */; };
-		1C35734119FF4CB000138AFB /* libeay32.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C35733C19FF4CB000138AFB /* libeay32.lib */; };
 		1C35734219FF4CB000138AFB /* ssl_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C35733D19FF4CB000138AFB /* ssl_server.cpp */; };
 		1C35734319FF4CB000138AFB /* ssl_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C35733F19FF4CB000138AFB /* ssl_socket.cpp */; };
+		1C35734619FF63E000138AFB /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C35734419FF63E000138AFB /* libcrypto.1.0.0.dylib */; };
+		1C35734719FF63E000138AFB /* libssl.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C35734519FF63E000138AFB /* libssl.1.0.0.dylib */; };
 		1C8D75B919F17994006E8282 /* dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D759F19F17994006E8282 /* dispatcher.cpp */; };
 		1C8D75BA19F17994006E8282 /* http_connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A119F17994006E8282 /* http_connection.cpp */; };
 		1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D75A419F17994006E8282 /* http_header.cpp */; };
@@ -92,14 +93,12 @@
 		1C35733519FF4CB000138AFB /* vc120.pdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = vc120.pdb; sourceTree = "<group>"; };
 		1C35733719FF4CB000138AFB /* 400.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 400.html; sourceTree = "<group>"; };
 		1C35733819FF4CB000138AFB /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
-		1C35733919FF4CB000138AFB /* httpd.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = httpd.vcxproj; sourceTree = "<group>"; };
-		1C35733A19FF4CB000138AFB /* httpd.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = httpd.vcxproj.filters; sourceTree = "<group>"; };
-		1C35733B19FF4CB000138AFB /* libeay32.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = libeay32.dll; sourceTree = "<group>"; };
-		1C35733C19FF4CB000138AFB /* libeay32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libeay32.lib; sourceTree = "<group>"; };
 		1C35733D19FF4CB000138AFB /* ssl_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ssl_server.cpp; sourceTree = "<group>"; };
 		1C35733E19FF4CB000138AFB /* ssl_server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl_server.h; sourceTree = "<group>"; };
 		1C35733F19FF4CB000138AFB /* ssl_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ssl_socket.cpp; sourceTree = "<group>"; };
 		1C35734019FF4CB000138AFB /* ssl_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl_socket.h; sourceTree = "<group>"; };
+		1C35734419FF63E000138AFB /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../../usr/local/Cellar/openssl/1.0.1j/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
+		1C35734519FF63E000138AFB /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = ../../../../../usr/local/Cellar/openssl/1.0.1j/lib/libssl.1.0.0.dylib; sourceTree = "<group>"; };
 		1C8D759F19F17994006E8282 /* dispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dispatcher.cpp; sourceTree = "<group>"; };
 		1C8D75A019F17994006E8282 /* dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dispatcher.h; sourceTree = "<group>"; };
 		1C8D75A119F17994006E8282 /* http_connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_connection.cpp; sourceTree = "<group>"; };
@@ -143,7 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C35734119FF4CB000138AFB /* libeay32.lib in Frameworks */,
+				1C35734619FF63E000138AFB /* libcrypto.1.0.0.dylib in Frameworks */,
+				1C35734719FF63E000138AFB /* libssl.1.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +153,8 @@
 		1C15D3F219F1795A00AC5DF9 = {
 			isa = PBXGroup;
 			children = (
+				1C35734419FF63E000138AFB /* libcrypto.1.0.0.dylib */,
+				1C35734519FF63E000138AFB /* libssl.1.0.0.dylib */,
 				1C15D3FD19F1795A00AC5DF9 /* httpd */,
 				1C15D3FC19F1795A00AC5DF9 /* Products */,
 			);
@@ -172,10 +174,6 @@
 				1C35730C19FF4CB000138AFB /* conf */,
 				1C35731319FF4CB000138AFB /* Debug */,
 				1C35733619FF4CB000138AFB /* errors */,
-				1C35733919FF4CB000138AFB /* httpd.vcxproj */,
-				1C35733A19FF4CB000138AFB /* httpd.vcxproj.filters */,
-				1C35733B19FF4CB000138AFB /* libeay32.dll */,
-				1C35733C19FF4CB000138AFB /* libeay32.lib */,
 				1C35733D19FF4CB000138AFB /* ssl_server.cpp */,
 				1C35733E19FF4CB000138AFB /* ssl_server.h */,
 				1C35733F19FF4CB000138AFB /* ssl_socket.cpp */,
@@ -458,6 +456,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/httpd",
+					/usr/local/Cellar/openssl/1.0.1j/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -469,6 +468,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/httpd",
+					/usr/local/Cellar/openssl/1.0.1j/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
