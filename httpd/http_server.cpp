@@ -51,22 +51,23 @@ private:
     http_handler *_handler;
 };
 
-http_server::http_server(http_handler *handler)
+http_server::http_server(http_handler *handler, configuration& conf)
 {
     IF_WINDOWS({
         WSADATA wsdata;
         WSAStartup(MAKEWORD(2, 2), &wsdata);
     });
 
+    _conf = conf;
     _http_handler = handler;
 
     _lowlevel_handler = new lowlevel_handler(handler);
     _tcp_server = new tcp_server(_lowlevel_handler);
     _ssl_server = new ssl_server(_lowlevel_handler);
 
-    std::string cert_file = "C:\\httpd\\cert.pem";
-    std::string key_file = "C:\\httpd\\key.pem";
-    if (_ssl_server->init(cert_file, key_file) == false) {
+    //     std::string cert_file = "C:\\httpd\\cert.pem";
+    //     std::string key_file = "C:\\httpd\\key.pem";
+    if (_ssl_server->init(_conf.cert_file(), _conf.key_file()) == false) {
         std::cout << "_ssl_server->init() error" << std::endl;
         delete _ssl_server;
         _ssl_server = nullptr;
@@ -92,15 +93,13 @@ http_server::~http_server()
     delete _lowlevel_handler;
 }
 
-bool http_server::start(const char_ptr addr, ushort port)
-{
-    return _tcp_server->start(addr, port);
-}
+// bool http_server::start(const char_ptr addr, ushort port)
+// {
+//     return _tcp_server->start(addr, port);
+// }
 
-bool http_server::start(configuration& conf)
+bool http_server::start()
 {
-    _conf = conf;
-
     _tcp_server->start((char_ptr)_conf.listen_address().c_str(), _conf.http_port());
     _ssl_server->start((char_ptr)_conf.listen_address().c_str(), _conf.https_port());
 
