@@ -9,11 +9,11 @@
 class http_server
 {
 public:
-    http_server(http_handler *handler);
+    http_server(http_handler *handler, configuration& conf);
     ~http_server();
 
-    bool start(const char_ptr addr, ushort port);
-    bool start(configuration& conf);
+    /*bool start(const char_ptr addr, ushort port);*/
+    bool start();
 
     void stop();
 
