@@ -42,6 +42,11 @@ bool server_general::start(const char_ptr addr, ushort port)
         }
 
         if (::bind(_servers, (struct sockaddr *) &info, sizeof(struct sockaddr)) == SOCKET_ERROR) {
+            IF_DEBUG({
+                int err = errno;
+                std::cout << "bind error: port(" << port << "), errno(" << err << ")" << std::endl;
+            })
+            
             closesocket(_servers);
             return false;
         }
