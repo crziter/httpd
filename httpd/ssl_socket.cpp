@@ -11,7 +11,7 @@ void ssl_socket::close()
 {
     socket_t client = SSL_get_fd(_ssl);
     SSL_free(_ssl);
-    closesocket(client);
+    ::closesocket(client);
 }
 
 int ssl_socket::send(char_ptr buff, int lenth)
