@@ -10,6 +10,7 @@ class ssl_server: public server_general
 {
 public:
     ssl_server(server_handler *handler);
+    ~ssl_server();
     
     bool init(std::string& cert_file, std::string& key_file);
     socket_interface* accept(socket_t serverfd, socket_t& sock) override;
