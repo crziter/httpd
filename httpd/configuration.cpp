@@ -66,11 +66,43 @@ bool configuration::load(std::string& conf_file)
             });
         }
 
+        //if (protocol.compare("https") == 0) {
+        regex reg_cert("cert\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
+        smatch match_cert;
+        std::string cert;
+
+        if (regex_search(conf_string, match_cert, reg_cert)) {
+            cert = match_cert[1].str();
+            /*host.ssl = true;*/
+            /*host.cert_file = cert;*/
+            _cert_file = cert;
+
+            IF_DEBUG({
+                cout << "\tCert: " << cert << std::endl;
+            });
+        }
+
+        regex reg_key("key\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
+        smatch match_key;
+        std::string key;
+
+        if (regex_search(conf_string, match_key, reg_key)) {
+            key = match_key[1].str();
+            /*host.ssl = true;*/
+            /*host.cert_file = cert;*/
+            _key_file = key;
+
+            IF_DEBUG({
+                cout << "\tKey: " << key << std::endl;
+            });
+        }
+        //}
+
         std::string conf_hosts = conf_string;
         regex reg_hosts("host\\s+\\\"(\\s*[a-zA-Z\\.\\-]+\\s*)\\\"\\s*\\{([^]+?)\\}");
         smatch match_hosts;
         while (regex_search(conf_hosts, match_hosts, reg_hosts)) {
-            for (int i = 1; i < match_hosts.size(); i+=2) {
+            for (unsigned int i = 1; i < match_hosts.size(); i+=2) {
                 std::string domain = match_hosts[i].str();
                 std::string host_conf = match_hosts[i + 1].str();
                 host_info host;
@@ -103,21 +135,21 @@ bool configuration::load(std::string& conf_file)
                         cout << "\tProtocol: '" << protocol << "'" << std::endl;
                     });
 
-                    if (protocol.compare("https") == 0) {
-                        regex reg_cert("cert\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
-                        smatch match_cert;
-                        std::string cert;
-
-                        if (regex_search(host_conf, match_cert, reg_cert)) {
-                            cert = match_cert[1].str();
-                            host.ssl = true;
-                            host.cert_file = cert;
-
-                            IF_DEBUG({
-                                cout << "\tCert: " << cert << std::endl;
-                            });
-                        }
-                    }
+//                     if (protocol.compare("https") == 0) {
+//                         regex reg_cert("cert\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
+//                         smatch match_cert;
+//                         std::string cert;
+// 
+//                         if (regex_search(host_conf, match_cert, reg_cert)) {
+//                             cert = match_cert[1].str();
+//                             host.ssl = true;
+//                             host.cert_file = cert;
+// 
+//                             IF_DEBUG({
+//                                 cout << "\tCert: " << cert << std::endl;
+//                             });
+//                         }
+//                     }
                 }
 
                 if (host.location.compare("") != 0)
@@ -211,4 +243,14 @@ std::string& configuration::mime_of(std::string ext)
         return _plain_text;
 
     return _mime_types[ext];
+}
+
+std::string& configuration::cert_file()
+{
+    return _cert_file;
+}
+
+std::string& configuration::key_file()
+{
+    return _key_file;
 }

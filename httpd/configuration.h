@@ -11,12 +11,12 @@ struct host_info
 {
     std::string domain;
     std::string location;
-    std::string cert_file;
-    bool ssl;
+    /* std::string cert_file; */
+    /*bool ssl;*/
 
     host_info() {
-        ssl = false;
-        cert_file = "";
+        /*ssl = false;*/
+        /* cert_file = ""; */
         location = "";
     }
 };
@@ -40,6 +40,9 @@ public:
     std::string& listen_address();
     int num_workers();
 
+    std::string& cert_file();
+    std::string& key_file();
+
 private:
     /* host <-> location */
     std::deque<host_info> _hosts;
@@ -51,6 +54,9 @@ private:
 
     std::map<std::string, std::string> _mime_types;
     std::string _plain_text;
+
+    std::string _cert_file;
+    std::string _key_file;
 };
 
 #endif
