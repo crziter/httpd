@@ -99,3 +99,6 @@ bool ssl_server::init(std::string& cert_file, std::string& key_file)
 
     return false;
 }
+
+ssl_server::~ssl_server() {
+}
