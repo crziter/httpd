@@ -109,4 +109,5 @@ bool http_server::start()
 void http_server::stop()
 {
     _tcp_server->stop_all();
+    _ssl_server->stop_all();
 }
