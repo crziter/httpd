@@ -10,14 +10,17 @@
 class content_service
 {
 public:
-    content_service(http_request& request, configuration& conf);
+    content_service(http_request& request, configuration& conf, host_info& hi);
     void process(http_response& resp);
     std::string& content();
+    bool is_cgi();
 
 private:
     configuration& _conf;
     http_request& _request;
     std::string _content;
+    host_info& _hi;
+    bool _is_cgi;
 };
 
 #endif

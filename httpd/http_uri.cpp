@@ -110,3 +110,8 @@ std::string http_uri::file_extension()
 
     return "";
 }
+
+std::string& http_uri::resource()
+{
+    return _resource;
+}

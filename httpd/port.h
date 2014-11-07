@@ -12,6 +12,9 @@
 
 typedef int socklen_t;
 typedef SOCKET socket_t;
+
+#define pipe(fd) _pipe(fd,256,O_TEXT)
+
 #elif defined(__linux__) || defined(__APPLE__)
 #include <arpa/inet.h>
 #include <sys/types.h>
@@ -46,11 +49,11 @@ typedef char * char_ptr;
 typedef unsigned short ushort;
 typedef std::vector<char> vector_char;
 
-#if defined(DEBUG) || defined(_DEBUG)
+//#if defined(DEBUG) || defined(_DEBUG)
 #define IF_DEBUG(x) x
-#else
-#define IF_DEBUG(x)
-#endif
+// #else
+// #define IF_DEBUG(x)
+// #endif
 
 #define TWO_NEWLINE "(\\r\\n\\r\\n|\\n\\n)"
 #define NEWLINE "(\\\r\\n|\\n)"

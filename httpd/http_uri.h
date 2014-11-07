@@ -10,6 +10,7 @@ public:
     std::string& path();
     std::string& query();
     std::string file_extension();
+    std::string& resource();
 
 private:
     std::string _resource;

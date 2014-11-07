@@ -23,7 +23,7 @@ private:
     ssl_server *    _ssl_server;
 
     http_handler *  _http_handler;
-    configuration   _conf;
+    configuration&   _conf;
 };
 
 #endif

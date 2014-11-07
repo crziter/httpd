@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cgi.cpp" />
     <ClCompile Include="configuration.cpp" />
     <ClCompile Include="content_service.cpp" />
     <ClCompile Include="file_operations.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="tcp_socket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cgi.h" />
     <ClInclude Include="configuration.h" />
     <ClInclude Include="content_service.h" />
     <ClInclude Include="file_operations.h" />
@@ -132,6 +134,9 @@
   <ItemGroup>
     <Library Include="libeay32.lib" />
     <Library Include="ssleay32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

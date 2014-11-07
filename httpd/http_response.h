@@ -15,6 +15,7 @@ public:
     void status(http_status status);
     void header(http_header& headers);
     void content(std::string& content);
+    void with_cgi();
 
     http_header& header();
 
@@ -32,6 +33,7 @@ private:
     int _sent;
     
     std::string _data;
+    bool _cgi;
 };
 
 #include "http_connection.h"

@@ -24,7 +24,6 @@ private:
 
 int main(int argc, char *argv[]) 
 {    
-    std::cout << "Loading configuration";
     configuration conf;
     std::string conf_file = std::string(CONFIG_FILE);
     if (conf.load(conf_file))
@@ -33,8 +32,8 @@ int main(int argc, char *argv[])
             std::string mime_f(MIME_FILE);
             conf.load_mime(mime_f);
         }
-        std::cout << "Loaded" << std::endl;
         
+        // Loaded conf
         http_server http(new handler(conf), conf);
         if (http.start()) {
             std::cout << "Http server was started" << std::endl << "Waiting for clients ... " << std::endl;

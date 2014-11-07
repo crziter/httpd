@@ -11,14 +11,17 @@ struct host_info
 {
     std::string domain;
     std::string location;
-    /* std::string cert_file; */
-    /*bool ssl;*/
 
     host_info() {
-        /*ssl = false;*/
-        /* cert_file = ""; */
         location = "";
+        domain = "";
     }
+};
+
+struct cgi_info
+{
+    std::string ext;
+    std::string cmd;
 };
 
 class configuration
@@ -31,6 +34,8 @@ public:
     bool load_mime(std::string& mime_file);
 
     host_info* config_for_host(std::string& host);
+
+    cgi_info * cgi_for_ext(std::string ext);
     
     ushort http_port();
     ushort https_port();
@@ -42,6 +47,8 @@ public:
 
     std::string& cert_file();
     std::string& key_file();
+
+    std::string& server_name();
 
 private:
     /* host <-> location */
@@ -57,6 +64,8 @@ private:
 
     std::string _cert_file;
     std::string _key_file;
+
+    std::deque<cgi_info> _cgis;
 };
 
 #endif

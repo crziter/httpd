@@ -6,6 +6,7 @@ http_response::http_response(http_connection& conn)
 {
     _status = http_status::OK;
     _sent = 0;
+    _cgi = false;
 
     IF_DEBUG({
         _content = "Hello world!";
@@ -55,8 +56,30 @@ void http_response::build()
 
     stream << _header.build();
     
-    stream << "Content-Length: " << _content.length() << "\r\n";
-    stream << "\r\n" << _content;
+    int length;
+    if (_cgi) {
+        int cl = _content.length();
+        auto cstr = _content.c_str();
+        length = 0;
+
+        for (int i = 0; i < cl; ++i) {
+            if (cstr[i] == '\r' && cstr[i + 1] == '\n' && cstr[i + 2] == '\r' && cstr[i + 3] == '\n') {
+                length = _content.length() - i - 4;
+                break;
+            }
+        }
+    }
+    else {
+        length = _content.length();
+    }
+
+    stream << "Content-Length: " << length << "\r\n";
+
+    if (!_cgi) {
+        stream << "\r\n";
+    }
+
+    stream << _content;
 
     _data = stream.str();
 }
@@ -64,4 +87,9 @@ void http_response::build()
 bool http_response::is_sent_all()
 {
     return (_sent == _data.length());
+}
+
+void http_response::with_cgi()
+{
+    _cgi = true;
 }

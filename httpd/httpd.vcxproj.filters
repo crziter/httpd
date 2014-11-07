@@ -81,6 +81,9 @@
     <ClCompile Include="ssl_socket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cgi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -155,9 +158,15 @@
     <ClInclude Include="ssl_socket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cgi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="libeay32.lib" />
     <Library Include="ssleay32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

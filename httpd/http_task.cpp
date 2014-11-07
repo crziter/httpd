@@ -18,11 +18,13 @@ void http_task::run()
     host_info* host = _conf.config_for_host(_request.host());
 
     if (host != nullptr) {
-        content_service cs(_request, _conf);
+        content_service cs(_request, _conf, *host);
         cs.process(_response);
 
-//         _response.status(status);
-
+        if (cs.is_cgi()) {
+            _response.with_cgi();
+        }
+        
         _response.content(cs.content());
     } else {
         _response.status(http_status::OK);

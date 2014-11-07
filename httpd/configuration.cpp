@@ -10,6 +10,7 @@ using std::smatch;
 using std::ifstream;
 using std::ios;
 using std::cout;
+using std::string;
 
 bool configuration::load(std::string& conf_file)
 {
@@ -66,15 +67,12 @@ bool configuration::load(std::string& conf_file)
             });
         }
 
-        //if (protocol.compare("https") == 0) {
         regex reg_cert("cert\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
         smatch match_cert;
         std::string cert;
 
         if (regex_search(conf_string, match_cert, reg_cert)) {
             cert = match_cert[1].str();
-            /*host.ssl = true;*/
-            /*host.cert_file = cert;*/
             _cert_file = cert;
 
             IF_DEBUG({
@@ -88,15 +86,48 @@ bool configuration::load(std::string& conf_file)
 
         if (regex_search(conf_string, match_key, reg_key)) {
             key = match_key[1].str();
-            /*host.ssl = true;*/
-            /*host.cert_file = cert;*/
             _key_file = key;
 
             IF_DEBUG({
                 cout << "\tKey: " << key << std::endl;
             });
         }
-        //}
+
+        std::string conf_cgi = conf_string;
+        regex reg_cgi("cgi\\s*\\{([^]+?)\\}");
+        smatch match_cgi;
+
+        while (regex_search(conf_cgi, match_cgi, reg_cgi)) {
+            string cgi_content = match_cgi[1].str();
+            string ext;
+            string cmd;
+            
+            regex reg_ext("ext\\s*=\\s*([a-zA-Z]+)\\s*(?:\\r|\\n)");
+            smatch match_ext;
+            if (regex_search(cgi_content, match_ext, reg_ext)) {
+                ext = match_ext[1].str();
+            }
+
+            regex reg_cmd("cmd\\s*=\\s*([^\\*\\?\\r\\n]+)");
+            smatch match_cmd;
+            if (regex_search(cgi_content, match_cmd, reg_cmd)) {
+                cmd = match_cmd[1].str();
+            }
+
+            if (ext.compare("") != 0 && cmd.compare("") != 0) {
+                cgi_info ci;
+                ci.ext = ext;
+                ci.cmd = cmd;
+
+                _cgis.push_back(ci);
+
+                IF_DEBUG({
+                    std::cout << "CGI: " << ext << "(" << cmd << ")" << std::endl;
+                })
+            }
+
+            conf_cgi = match_cgi.suffix().str();
+        }
 
         std::string conf_hosts = conf_string;
         regex reg_hosts("host\\s+\\\"(\\s*[a-zA-Z\\.\\-]+\\s*)\\\"\\s*\\{([^]+?)\\}");
@@ -134,22 +165,6 @@ bool configuration::load(std::string& conf_file)
                     IF_DEBUG({
                         cout << "\tProtocol: '" << protocol << "'" << std::endl;
                     });
-
-//                     if (protocol.compare("https") == 0) {
-//                         regex reg_cert("cert\\s*=\\s*([^]+?)\\s*(?:\\r|\\n)");
-//                         smatch match_cert;
-//                         std::string cert;
-// 
-//                         if (regex_search(host_conf, match_cert, reg_cert)) {
-//                             cert = match_cert[1].str();
-//                             host.ssl = true;
-//                             host.cert_file = cert;
-// 
-//                             IF_DEBUG({
-//                                 cout << "\tCert: " << cert << std::endl;
-//                             });
-//                         }
-//                     }
                 }
 
                 if (host.location.compare("") != 0)
@@ -253,4 +268,19 @@ std::string& configuration::cert_file()
 std::string& configuration::key_file()
 {
     return _key_file;
+}
+
+cgi_info * configuration::cgi_for_ext(std::string ext)
+{
+    for (cgi_info& i : _cgis) {
+        if (i.ext.compare(ext) == 0)
+            return &i;
+    }
+
+    return nullptr;
+}
+
+std::string& configuration::server_name()
+{
+    return _server;
 }
