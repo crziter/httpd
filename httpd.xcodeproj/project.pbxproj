@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C15D3FF19F1795A00AC5DF9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C15D3FE19F1795A00AC5DF9 /* main.cpp */; };
 		1C17818119F7AAF900E60148 /* content_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C17817F19F7AAF900E60148 /* content_service.cpp */; };
+		1C3082F71A113B4400F448C3 /* cgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C3082F51A113B4400F448C3 /* cgi.cpp */; };
 		1C33525119F57E0C0011825D /* configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C33524E19F57E0C0011825D /* configuration.cpp */; };
 		1C33525219F57E0C0011825D /* file_operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C33525019F57E0C0011825D /* file_operations.cpp */; };
 		1C35734219FF4CB000138AFB /* ssl_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C35733D19FF4CB000138AFB /* ssl_server.cpp */; };
@@ -50,6 +51,8 @@
 		1C15D3FE19F1795A00AC5DF9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1C17817F19F7AAF900E60148 /* content_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = content_service.cpp; sourceTree = "<group>"; };
 		1C17818019F7AAF900E60148 /* content_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = content_service.h; sourceTree = "<group>"; };
+		1C3082F51A113B4400F448C3 /* cgi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cgi.cpp; sourceTree = "<group>"; };
+		1C3082F61A113B4400F448C3 /* cgi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cgi.h; sourceTree = "<group>"; };
 		1C33524E19F57E0C0011825D /* configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = configuration.cpp; sourceTree = "<group>"; };
 		1C33524F19F57E0C0011825D /* configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = configuration.h; sourceTree = "<group>"; };
 		1C33525019F57E0C0011825D /* file_operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_operations.cpp; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 		1C15D3FD19F1795A00AC5DF9 /* httpd */ = {
 			isa = PBXGroup;
 			children = (
+				1C3082F51A113B4400F448C3 /* cgi.cpp */,
+				1C3082F61A113B4400F448C3 /* cgi.h */,
 				1C35733D19FF4CB000138AFB /* ssl_server.cpp */,
 				1C35733E19FF4CB000138AFB /* ssl_server.h */,
 				1C35733F19FF4CB000138AFB /* ssl_socket.cpp */,
@@ -241,6 +246,7 @@
 				1C33525119F57E0C0011825D /* configuration.cpp in Sources */,
 				1C17818119F7AAF900E60148 /* content_service.cpp in Sources */,
 				1C33525219F57E0C0011825D /* file_operations.cpp in Sources */,
+				1C3082F71A113B4400F448C3 /* cgi.cpp in Sources */,
 				1C8D75BB19F17994006E8282 /* http_header.cpp in Sources */,
 				1CD7025F19F5E967009A6D7D /* http_error.cpp in Sources */,
 				1C8D75C019F17994006E8282 /* http_uri.cpp in Sources */,

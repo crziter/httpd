@@ -50,7 +50,7 @@ typedef unsigned short ushort;
 typedef std::vector<char> vector_char;
 
 //#if defined(DEBUG) || defined(_DEBUG)
-#define IF_DEBUG(x) x
+#define IF_DEBUG(x) // x
 // #else
 // #define IF_DEBUG(x)
 // #endif
